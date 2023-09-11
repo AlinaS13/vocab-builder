@@ -1,0 +1,105 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 23px;
+  padding-right: 23px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 48px;
+  }
+}
+
+.logoWrp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  img {
+    width: 36px;
+    @media screen and (min-width: $breakpoint-desktop) {
+      width: 40px;
+    }
+  }
+  p {
+    color: $darckTextColor;
+    @include font-size(18, 600, 24);
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      @include font-size(22, 600, 32);
+    }
+  }
+}
+
+.navWrp {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.navLink {
+  display: none;
+  @media screen and (min-width: $breakpoint-desktop) {
+    display: block;
+    color: $darckTextColor;
+    @include font-size(14, 500);
+    &:hover,
+    &:focus {
+      color: $mainAccentColor;
+      transition: $hoverAnimation;
+    }
+    &[aria-current="page"] {
+      color: $lightTextColor;
+      background-color: $mainAccentColor;
+      padding: 12px 20px;
+      border-radius: 15px;
+    }
+  }
+}
+
+.authWrp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    gap: 16px;
+  }
+}
+.userName {
+  color: $darckTextColor;
+  @include font-size(16, 500, 24);
+  @media screen and (min-width: $breakpoint-desktop) {
+    @include font-size(20, 500);
+  }
+}
+.userSvgWrp {
+  position: relative;
+  background-color: $mainAccentColor;
+  width: 48px;
+  height: 48px;
+  border-radius: 30px;
+  svg {
+    position: absolute;
+    top: 11px;
+    right: 12px;
+  }
+}
+.burgerMenuBtn {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  @media screen and (min-width: $breakpoint-tablet) {
+    display: none;
+  }
+}

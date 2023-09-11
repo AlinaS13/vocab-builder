@@ -1,0 +1,87 @@
+@import "./scss/variables";
+@import-normalize;
+
+@font-face {
+  font-display: swap;
+  font-family: "Fixel Display";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/FixelDisplay-Regular.ttf") format("truetype"),
+    url("./assets/fonts/FixelDisplay-Regular.woff2") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fixel Display";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/FixelDisplay-Medium.ttf") format("truetype"),
+    url("./assets/fonts/FixelDisplay-Medium.woff2") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Fixel Display";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/FixelDisplay-SemiBold.ttf") format("truetype"),
+    url("./assets/fonts/FixelDisplay-SemiBold.woff2") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fixel Display";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/FixelDisplay-Bold.ttf") format("truetype"),
+    url("./assets/fonts/FixelDisplay-Bold.woff2") format("woff");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fixel Display", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $mainBgColor;
+}
+
+html,
+body {
+  height: 100%;
+  color: $darckTextColor;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+img {
+  display: block;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  outline: transparent;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  outline: transparent;
+  border: none;
+}
