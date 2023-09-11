@@ -1,5 +1,10 @@
 const RecommendPage = () => {
-  return <div>RecommendPage</div>;
+  return (
+    <div>
+      RecommendPage
+      hffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    </div>
+  );
 };
 
 export default RecommendPage;
