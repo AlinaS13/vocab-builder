@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.css": "/vocab-builder/static/css/main.30dd2551.css",
-    "main.js": "/vocab-builder/static/js/main.19a28cc7.js",
+    "main.css": "/vocab-builder/static/css/main.31290eda.css",
+    "main.js": "/vocab-builder/static/js/main.7a8f42e7.js",
     "static/js/787.46fff5b2.chunk.js": "/vocab-builder/static/js/787.46fff5b2.chunk.js",
     "static/media/FixelDisplay-Medium.ttf": "/vocab-builder/static/media/FixelDisplay-Medium.2bf73c318b39b6747802.ttf",
     "static/media/FixelDisplay-SemiBold.ttf": "/vocab-builder/static/media/FixelDisplay-SemiBold.5a60f17e88fec6794428.ttf",
     "static/media/FixelDisplay-Bold.ttf": "/vocab-builder/static/media/FixelDisplay-Bold.42570372d1fc688bdc82.ttf",
     "static/media/FixelDisplay-Regular.ttf": "/vocab-builder/static/media/FixelDisplay-Regular.885dc0e15ca46cc1f777.ttf",
+    "static/media/vector.png": "/vocab-builder/static/media/vector.53ee56bc298602faeee9.png",
+    "static/media/illustration.png": "/vocab-builder/static/media/illustration.06401c6766d096388158.png",
     "static/media/FixelDisplay-SemiBold.woff2": "/vocab-builder/static/media/FixelDisplay-SemiBold.1be0490ce9d813e0e207.woff2",
     "static/media/FixelDisplay-Bold.woff2": "/vocab-builder/static/media/FixelDisplay-Bold.dcc3807da8e7f0dce39e.woff2",
     "static/media/FixelDisplay-Medium.woff2": "/vocab-builder/static/media/FixelDisplay-Medium.366a8327f2faf30683f7.woff2",
     "static/media/FixelDisplay-Regular.woff2": "/vocab-builder/static/media/FixelDisplay-Regular.12dbc6ce12689796383f.woff2",
     "index.html": "/vocab-builder/index.html",
     "static/media/logo.svg": "/vocab-builder/static/media/logo.e3b0e6323296508368beb4ab5901135c.svg",
-    "main.30dd2551.css.map": "/vocab-builder/static/css/main.30dd2551.css.map",
-    "main.19a28cc7.js.map": "/vocab-builder/static/js/main.19a28cc7.js.map",
+    "main.31290eda.css.map": "/vocab-builder/static/css/main.31290eda.css.map",
+    "main.7a8f42e7.js.map": "/vocab-builder/static/js/main.7a8f42e7.js.map",
     "787.46fff5b2.chunk.js.map": "/vocab-builder/static/js/787.46fff5b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.30dd2551.css",
-    "static/js/main.19a28cc7.js"
+    "static/css/main.31290eda.css",
+    "static/js/main.7a8f42e7.js"
   ]
 }
