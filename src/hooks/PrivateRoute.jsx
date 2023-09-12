@@ -1,12 +1,13 @@
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 // import { getUser } from "../redux/auth/authSelector";
 // import { useSelector } from "react-redux";
 
-// export const PrivateRoute = ({ children }) => {
-//   const isLoggedIn = useSelector(getUser);
+export const PrivateRoute = ({ children }) => {
+  //   const isLoggedIn = useSelector(getUser);
+  const isLoggedIn = true;
 
-//   if (!isLoggedIn) {
-//     return <Navigate to="/" />;
-//   }
-//   return children;
-// };
+  if (!isLoggedIn) {
+    return <Navigate to="/register" />;
+  }
+  return children;
+};

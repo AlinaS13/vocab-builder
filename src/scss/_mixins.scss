@@ -71,18 +71,15 @@ $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1440px;
 
 @mixin container {
-  padding-top: 30px;
   padding-left: 16px;
   padding-right: 16px;
 
   @include tablet {
-    padding-left: 147px;
-    padding-right: 30px;
-    padding-bottom: 30px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   @include desktop {
-    padding-left: 147px;
-    padding-right: 30px;
-    padding-bottom: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 }
