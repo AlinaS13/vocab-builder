@@ -103,3 +103,23 @@
     display: none;
   }
 }
+
+.logoutBtn {
+  display: none;
+  @media screen and (min-width: $breakpoint-tablet) {
+    display: block;
+    background: transparent;
+    padding-top: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    svg {
+      width: 26px;
+      height: 26px;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

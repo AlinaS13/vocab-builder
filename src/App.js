@@ -20,41 +20,41 @@ function App() {
           <Route
             path="/register"
             element={
-              // <PublicRoute>
-              <RegisterPage />
-              // </PublicRoute>
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/login"
             element={
-              // <PublicRoute>
-              <LoginPage />
-              // </PublicRoute>
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
             }
           />
           <Route
             path="/dictionary"
             element={
-              // <PrivateRoute>
-              <DictionaryPage />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <DictionaryPage />
+              </PrivateRoute>
             }
           />
           <Route
             path="/recommend"
             element={
-              // <PrivateRoute>
-              <RecommendPage />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <RecommendPage />
+              </PrivateRoute>
             }
           />
           <Route
             path="/training"
             element={
-              // <PrivateRoute>
-              <TrainingPage />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TrainingPage />
+              </PrivateRoute>
             }
           />
           <Route path="*" element={<NotFoundPage />} />

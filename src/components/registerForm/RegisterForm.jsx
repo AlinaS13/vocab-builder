@@ -6,8 +6,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ErrorSVG from "../../assets/svg/ErrorSvg";
 import SuccessSVG from "../../assets/svg/SuccessSvg";
-// import { useDispatch } from "react-redux";
-// import { registrationUser } from "../../redux/auth/authOperation";
+import { useDispatch } from "react-redux";
+import { registrationUser } from "../../redux/auth/authOperation";
 
 const SignupSchema = yup.object().shape({
   name: yup
@@ -35,18 +35,18 @@ const SignupSchema = yup.object().shape({
     .max(7, "Password cannot be longer than 7 characters")
     .test(
       "password",
-      "Password is little secure.Please enter an uppercase letter, a lowercase letter, and a number",
-      (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(value || "")
+      "The password must consist of 6 English letters and 1 number",
+      (value) => /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/.test(value || "")
     ),
 });
 
 export const RegisterForm = () => {
   const [passwordType, setPasswordType] = useState("password");
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //   const handleRegister = (userData) => {
-  //     dispatch(registrationUser(userData));
-  //   };
+  const handleRegister = (userData) => {
+    dispatch(registrationUser(userData));
+  };
 
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -64,9 +64,9 @@ export const RegisterForm = () => {
         password: "",
       }}
       validateOnBlur
-      //   onSubmit={(userData) => {
-      //     handleRegister(userData);
-      //   }}
+      onSubmit={(userData) => {
+        handleRegister(userData);
+      }}
     >
       {({
         values,

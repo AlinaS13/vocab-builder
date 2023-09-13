@@ -8,6 +8,8 @@ import { NavLink } from "react-router-dom";
 // import { registrationUser } from "../../redux/auth/authOperation";
 import ErrorSVG from "../../assets/svg/ErrorSvg";
 import SuccessSVG from "../../assets/svg/SuccessSvg";
+import { loginUser } from "../../redux/auth/authOperation";
+import { useDispatch } from "react-redux";
 
 const SignupSchema = yup.object().shape({
   email: yup
@@ -28,18 +30,18 @@ const SignupSchema = yup.object().shape({
     .max(7, "Password cannot be longer than 7 characters")
     .test(
       "password",
-      "Password is little secure.Please enter an uppercase letter, a lowercase letter, and a number",
-      (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(value || "")
+      "The password must consist of 6 English letters and 1 number",
+      (value) => /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/.test(value || "")
     ),
 });
 
 export const LoginForm = () => {
   const [passwordType, setPasswordType] = useState("password");
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //   const handleRegister = (userData) => {
-  //     dispatch(registrationUser(userData));
-  //   };
+  const handleLogin = (userData) => {
+    dispatch(loginUser(userData));
+  };
 
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -52,14 +54,13 @@ export const LoginForm = () => {
     <Formik
       validationSchema={SignupSchema}
       initialValues={{
-        name: "",
         email: "",
         password: "",
       }}
       validateOnBlur
-      //   onSubmit={(userData) => {
-      //     handleRegister(userData);
-      //   }}
+      onSubmit={(userData) => {
+        handleLogin(userData);
+      }}
     >
       {({
         values,
