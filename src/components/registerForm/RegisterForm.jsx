@@ -4,6 +4,8 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import * as yup from "yup";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import ErrorSVG from "../../assets/svg/ErrorSvg";
+import SuccessSVG from "../../assets/svg/SuccessSvg";
 // import { useDispatch } from "react-redux";
 // import { registrationUser } from "../../redux/auth/authOperation";
 
@@ -98,7 +100,16 @@ export const RegisterForm = () => {
                   } ${!errors.name && touched.name ? styles.success : ""}`}
                 />
                 {touched.name && errors.name && (
-                  <p className={styles.errorMessage}>{errors.name}</p>
+                  <div className={styles.messageWrp}>
+                    <ErrorSVG />
+                    <p className={styles.errorMessage}>{errors.name}</p>
+                  </div>
+                )}
+                {touched.name && !errors.name && (
+                  <div className={styles.messageWrp}>
+                    <SuccessSVG />
+                    <p className={styles.successMessage}>Success name</p>
+                  </div>
                 )}
               </label>
 
@@ -114,7 +125,16 @@ export const RegisterForm = () => {
                   className={styles.registrationField}
                 />
                 {touched.email && errors.email && (
-                  <p className={styles.errorMessage}>{errors.email}</p>
+                  <div className={styles.messageWrp}>
+                    <ErrorSVG />
+                    <p className={styles.errorMessage}>{errors.email}</p>
+                  </div>
+                )}
+                {touched.email && !errors.email && (
+                  <div className={styles.messageWrp}>
+                    <SuccessSVG />
+                    <p className={styles.successMessage}>Success email</p>
+                  </div>
                 )}
               </label>
 
@@ -137,7 +157,16 @@ export const RegisterForm = () => {
                   )}
                 </div>
                 {touched.password && errors.password && (
-                  <p className={styles.errorMessage}>{errors.password}</p>
+                  <div className={styles.messageWrp}>
+                    <ErrorSVG />
+                    <p className={styles.errorMessage}>{errors.password}</p>
+                  </div>
+                )}
+                {touched.password && !errors.password && (
+                  <div className={styles.messageWrp}>
+                    <SuccessSVG />
+                    <p className={styles.successMessage}>Success password</p>
+                  </div>
                 )}
               </label>
               <button

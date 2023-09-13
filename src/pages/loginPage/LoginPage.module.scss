@@ -1,7 +1,7 @@
 @import "../../scss/mixins";
 @import "../../scss/variables";
 
-.registerPageContainer {
+.loginPageContainer {
   display: flex;
   flex-direction: column-reverse;
   //   width: 100%;
@@ -54,9 +54,9 @@
 }
 
 .contentText {
-  display: none;
-  //   color: rgba(18, 20, 23, 0.8);
-  //   @include font-size(14, 400);
+  color: rgba(18, 20, 23, 0.8);
+  @include font-size(14, 400);
+  margin-bottom: 43px;
   @media screen and (min-width: $breakpoint-tablet) {
     @include font-size(14, 400, 24);
     display: block;

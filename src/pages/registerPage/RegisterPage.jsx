@@ -1,7 +1,6 @@
 import styles from "./RegisterPage.module.scss";
 import { RegisterForm } from "../../components/registerForm/RegisterForm";
 import illustration from "../../assets/img/illustration.png";
-// import vector from "../../assets//img/vector.png";
 
 const RegisterPage = () => {
   return (

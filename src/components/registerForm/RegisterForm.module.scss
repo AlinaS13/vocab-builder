@@ -112,12 +112,20 @@
     background-color: $secondaryAccentColor;
   }
 }
+.messageWrp {
+  display: flex;
+  gap: 4px;
+}
 
 .errorMessage {
-  font-size: 14px;
-  line-height: 1.5;
+  @include font-size(12, 400, 18);
+  letter-spacing: 0.12px;
   color: #d80027;
-  margin-left: 18px;
+}
+.successMessage {
+  @include font-size(12, 400, 18);
+  letter-spacing: 0.12px;
+  color: #3cbf61;
 }
 
 .navLink {
