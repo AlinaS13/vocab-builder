@@ -21,7 +21,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logoWrp}>
-        <img src={logo} className={styles.logoImg} alt={logo} />
+        <img src={logo} alt={logo} />
         <p className={styles.logoText}>VocabBuilder</p>
       </div>
       {isAuth ? (

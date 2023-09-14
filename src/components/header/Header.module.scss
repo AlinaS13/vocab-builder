@@ -86,13 +86,21 @@
 .userSvgWrp {
   position: relative;
   background-color: $mainAccentColor;
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   border-radius: 30px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 48px;
+    height: 48px;
+  }
   svg {
     position: absolute;
-    top: 11px;
-    right: 12px;
+    top: 5px;
+    right: 6px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      top: 11px;
+      right: 12px;
+    }
   }
 }
 .burgerMenuBtn {
