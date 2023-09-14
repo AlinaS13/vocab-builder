@@ -27,25 +27,25 @@ function App() {
           <Route
             path="/dictionary"
             element={
-              <PrivateRoute>
-                <DictionaryPage />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <DictionaryPage />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/recommend"
             element={
-              <PrivateRoute>
-                <RecommendPage />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <RecommendPage />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/training"
             element={
-              <PrivateRoute>
-                <TrainingPage />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <TrainingPage />
+              // </PrivateRoute>
             }
           />
         </Route>

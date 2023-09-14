@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 export const PublicRoute = ({ children }) => {
   const isLoggedIn = useSelector(getisAuth);
-
+  console.log(isLoggedIn);
   if (isLoggedIn) {
     return <Navigate to="/dictionary" />;
   }
