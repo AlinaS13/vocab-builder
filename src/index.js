@@ -5,17 +5,17 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { HashRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <HashRouter basename="/vocab-builder">
+      <BrowserRouter basename="/vocab-builder">
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </PersistGate>
   </Provider>
 );
