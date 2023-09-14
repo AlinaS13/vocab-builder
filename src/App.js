@@ -15,7 +15,7 @@ import LoginPage from "./pages/loginPage/LoginPage";
 function App() {
   return (
     <div className={styles.container}>
-      <Routes>
+      <Routes basename="/vocab-builder">
         <Route
           path="/"
           element={
@@ -24,30 +24,9 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route
-            path="/dictionary"
-            element={
-              // <PrivateRoute>
-              <DictionaryPage />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/recommend"
-            element={
-              // <PrivateRoute>
-              <RecommendPage />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/training"
-            element={
-              // <PrivateRoute>
-              <TrainingPage />
-              // </PrivateRoute>
-            }
-          />
+          <Route path="/dictionary" element={<DictionaryPage />} />
+          <Route path="/recommend" element={<RecommendPage />} />
+          <Route path="/training" element={<TrainingPage />} />
         </Route>
         <Route
           path="/register"
