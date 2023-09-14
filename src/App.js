@@ -16,23 +16,14 @@ function App() {
   return (
     <div className={styles.container}>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
           <Route
             path="/dictionary"
             element={
@@ -57,8 +48,25 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer
         position="top-right"
