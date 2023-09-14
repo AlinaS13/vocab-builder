@@ -15,7 +15,7 @@ import LoginPage from "./pages/loginPage/LoginPage";
 function App() {
   return (
     <div className={styles.container}>
-      <Routes basename="/vocab-builder">
+      <Routes>
         <Route
           path="/"
           element={
