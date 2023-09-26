@@ -1,0 +1,57 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.dictionaryContainer {
+  height: 100vh;
+  background-color: $pageBgColor;
+  padding-top: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 48px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding-top: 80px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+.dictionaryFilterWrp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dictionaryWrp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.dictionaryProgres {
+  color: rgba(18, 20, 23, 0.5);
+  @include font-size(16, 500, 24);
+}
+
+.dictionaryAddBtn {
+  display: flex;
+  gap: 8px;
+  background-color: transparent;
+  color: $darckTextColor;
+  @include font-size(16, 500, 24);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+.dictionarylink {
+  display: flex;
+  gap: 8px;
+  color: $darckTextColor;
+  @include font-size(16, 500, 24);
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

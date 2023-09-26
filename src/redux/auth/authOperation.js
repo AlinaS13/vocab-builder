@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk(
       setAuthHeader(token);
       return { email, password, name, token };
     } catch (error) {
-      toast.failure("Incorect email or password");
+      toast.error("Incorect email or password");
       return rejectWithValue(error.message);
     }
   }
@@ -53,11 +53,4 @@ export const logoutUser = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   }
-
-  // try {
-  //   await signOut(auth);
-  //   toast.info("Bye! See you soon!");
-  // } catch (error) {
-  //   return thunkAPI.rejectWithValue(error.message);
-  // }
 );

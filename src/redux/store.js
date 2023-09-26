@@ -16,21 +16,18 @@ import {
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 import authReducer from "./auth/authSlicе";
-// import breedsSlice from "./breeds/breedsSlice";
-// import votingSlice from "./voting/votingSlice";
-// import searchSlice from "./search/SearchSlice";
+import wordsReducer from "./words/wordsSlicе";
 
 const persistConfig = {
-  key: "root",
+  key: "user",
   version: 1,
   storage,
-  //   blacklist: ["teachers"],
+  whitelist: ["user"],
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  //   breeds: breedsSlice,
-  //   voting: votingSlice,
+  words: wordsReducer,
 });
 
 const middlewares = [

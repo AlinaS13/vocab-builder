@@ -1,0 +1,141 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.filtersWrp {
+  display: flex;
+  gap: 8px;
+}
+
+.inputWrp {
+  position: relative;
+  width: 274px;
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid rgba(18, 20, 23, 0.1);
+    background: $pageBgColor;
+    padding: 12px 24px;
+    outline: none;
+    @include font-size(16, 500, 24);
+    &::placeholder {
+      color: $darckTextColor;
+      font-family: inherit;
+      @include font-size(16, 500, 24);
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid $secondaryAccentColor;
+    }
+    &:active {
+      border: 1px solid $mainAccentColor;
+    }
+  }
+}
+
+.inputSvg {
+  position: absolute;
+  background-color: $pageBgColor;
+  width: 20px;
+  height: 20px;
+  top: 16px;
+  right: 25px;
+}
+
+.filterBox {
+  width: 164px;
+  height: 48px;
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 15px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  background: $pageBgColor;
+  color: #8c8c8c;
+  @include font-size(16, 400, 24);
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    border: 1px solid $secondaryAccentColor;
+  }
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+  }
+}
+
+.filterBtn {
+  border: transparent;
+  background-color: inherit;
+  position: absolute;
+  top: 57%;
+  right: 11%;
+  transform: translateY(-50%);
+
+  padding: 0;
+}
+
+.dropDowList {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  z-index: 8;
+  top: 54px;
+  left: 0;
+  width: 100%;
+  //   max-height: 310px;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  background: $pageBgColor;
+  color: #8c8c8c;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: transform 500ms cubic-bezier(0.39, 0.575, 0.565, 1),
+    opacity 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  span {
+    // padding-left: 16px;
+    color: #8c8c8c;
+    cursor: pointer;
+  }
+}
+.dropDownItem {
+  cursor: pointer;
+  //   padding-left: 16px;
+}
+
+.active {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  opacity: 1;
+  transition: transform 500ms cubic-bezier(0.39, 0.575, 0.565, 1),
+    opacity 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.hidden {
+  -webkit-transform: rotateX(70deg);
+  transform: rotateX(70deg);
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
