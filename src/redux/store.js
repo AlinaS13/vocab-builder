@@ -43,36 +43,35 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
+//!
+//import storage from "redux-persist/lib/storage";
+// import logger from "redux-logger";
+// import authReducer from "./auth/authSlicе";
+// import wordsReducer from "./words/wordsSlicе";
+// import { combineReducers } from "redux";
+// import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 // import {
-//   combineReducers,
-//   configureStore,
-//   getDefaultMiddleware,
-// } from "@reduxjs/toolkit";
-// import {
-//   persistStore,
-//   persistReducer,
 //   FLUSH,
-//   REHYDRATE,
 //   PAUSE,
 //   PERSIST,
 //   PURGE,
 //   REGISTER,
+//   REHYDRATE,
 // } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-// import logger from "redux-logger";
-// import authReducer from "./auth/authSlicе";
-// import wordsReducer from "./words/wordsSlicе";
+// import persistReducer from "redux-persist/es/persistReducer";
+// import persistStore from "redux-persist/es/persistStore";
 
-// const authPersistConfig = {
-//   key: "auth",
+// const persistConfig = {
+//   key: "user",
+//   version: 1,
 //   storage,
 //   whitelist: ["token"],
 // };
 
-// // const rootReducer = combineReducers({
-// //   auth: authReducer,
-// //   words: wordsReducer,
-// // });
+// const rootReducer = combineReducers({
+//   auth: authReducer,
+//   words: wordsReducer,
+// });
 
 // const middlewares = [
 //   ...getDefaultMiddleware({
@@ -82,19 +81,9 @@ export const persistor = persistStore(store);
 //   }),
 //   logger,
 // ];
-
-// // const persistedReducer = persistReducer(authPersistConfig, rootReducer);
-
-// // export const store = configureStore({
-// //   reducer: persistedReducer,
-// //   middleware: middlewares,
-// // });
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 // export const store = configureStore({
-//   reducer: {
-//     auth: persistReducer(authPersistConfig, authReducer),
-//     words: wordsReducer,
-//   },
+//   reducer: persistedReducer,
 //   middleware: middlewares,
 // });
-
 // export const persistor = persistStore(store);

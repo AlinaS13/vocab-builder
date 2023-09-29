@@ -11,9 +11,11 @@ import {
 } from "../../redux/words/wordsSelector";
 import { Loader } from "../loader/Loader";
 import { nanoid } from "@reduxjs/toolkit";
+import { testGetisAuth } from "../../redux/auth/authSelector";
 
 export const Filters = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(testGetisAuth);
   const categories = useSelector(selectCategories);
   const isLoading = useSelector(isLoadingWords);
   const [selectedCategories, setSelectedCategories] = useState(false);
@@ -41,15 +43,27 @@ export const Filters = () => {
     debouncedSearch(query);
   };
 
+  // useEffect(() => {
+  //   if (searchQuery === "") {
+  //     dispatch(getAllWords({ searchQuery }));
+  //   }
+  // }, [dispatch, searchQuery]);
+
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, [dispatch]);
+
   useEffect(() => {
-    if (searchQuery === "") {
+    if (searchQuery !== "") {
       dispatch(getAllWords({ searchQuery }));
     }
   }, [dispatch, searchQuery]);
 
   useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(getCategories());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <div className={styles.filtersWrp}>

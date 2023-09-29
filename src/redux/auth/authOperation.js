@@ -3,22 +3,29 @@ import { toast } from "react-toastify";
 import { clearAuthHeader, setAuthHeader } from "../../api";
 import axios from "axios";
 
+// import { useDispatch } from "react-redux";
+// import { getAllWords, getCategories } from "../words/wordsOperation";
+
 export const registrationUser = createAsyncThunk(
   "auth/registrationUser",
   async ({ rejectWithValue, ...userData }) => {
-    try {
-      const {
-        data: { name, email, token },
-      } = await axios.post(`/users/signup`, userData);
+    const params = {
+      url: "/users/signup",
+      method: "POST",
+      data: userData,
+    };
+    return axios(params)
+      .then((response) => {
+        setAuthHeader(response.data.token);
+        return response.data;
+      })
 
-      setAuthHeader(token);
-      return { name, email, token };
-    } catch (error) {
-      if (error.response.status === 409) {
-        toast.error("Such email already exists");
-      }
-      return rejectWithValue(error.message);
-    }
+      .catch((error) => {
+        if (error.response.status === 409) {
+          toast.error("Such email already exists");
+        }
+        return rejectWithValue(error.message);
+      });
   }
 );
 
@@ -51,6 +58,30 @@ export const logoutUser = createAsyncThunk(
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getCurrentUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return rejectWithValue();
+    }
+
+    setAuthHeader(persistedToken);
+
+    try {
+      const { data } = await axios.get("/users/current");
+      // useDispatch(getCategories);
+      // useDispatch(getAllWords);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
     }
   }
 );

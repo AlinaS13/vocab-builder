@@ -11,8 +11,18 @@ import DictionaryPage from "./pages/dictionaryPage/DictionaryPage";
 import RecommendPage from "./pages/recommendPage/RecommendPage";
 import TrainingPage from "./pages/trainitgPage/TrainingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getCurrentUser } from "./redux/auth/authOperation";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCurrentUser()).then((res) => {
+      console.log("User", res);
+    });
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className={styles.container}>
       <Routes>

@@ -9,8 +9,9 @@ export const getWordsByCategory = createAsyncThunk(
         params: { search: query },
       });
 
+      // setAuthHeader(token);
+
       const data = response.data;
-      // Повернення даних для збереження в Redux store
       return data;
     } catch (error) {
       console.error("Помилка при отриманні слів за категорією:", error);
@@ -22,7 +23,6 @@ export const getWordsByCategory = createAsyncThunk(
 export const getAllWords = createAsyncThunk(
   "words/getAllWords",
   async ({ rejectWithValue, searchQuery }) => {
-    console.log(searchQuery);
     try {
       const { data } = await axios.get("/words/all", {
         params: { keyword: searchQuery },
@@ -39,6 +39,7 @@ export const getCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get("/words/categories");
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
