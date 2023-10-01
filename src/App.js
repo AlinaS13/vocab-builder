@@ -18,9 +18,7 @@ import { getCurrentUser } from "./redux/auth/authOperation";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCurrentUser()).then((res) => {
-      console.log("User", res);
-    });
+    dispatch(getCurrentUser());
     // eslint-disable-next-line
   }, []);
   return (

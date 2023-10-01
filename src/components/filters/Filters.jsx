@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Filters.module.scss";
+import "./stylesFilter.css";
 import { FiSearch } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
@@ -18,6 +19,7 @@ export const Filters = () => {
   const isLoggedIn = useSelector(testGetisAuth);
   const categories = useSelector(selectCategories);
   const isLoading = useSelector(isLoadingWords);
+  const [selectedCategoryType, setSelectedCategoryType] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(false);
   const [selectedCategorie, setSelectedCategorie] = useState("Categories");
   const [searchQuery, setSearchQuery] = useState("");
@@ -89,7 +91,7 @@ export const Filters = () => {
               <MdKeyboardArrowUp size={20} fill="#121417" />
             </button>
           )}
-          <p>{selectedCategorie}</p>
+          <p className={styles.categoriesName}>{selectedCategorie}</p>
           <ul
             className={
               isCategoriesOpen === true
@@ -104,7 +106,8 @@ export const Filters = () => {
                 setIsCategoriesOpen(false);
               }}
             >
-              Categories
+              {" "}
+              <p className={styles.categoriesName}> Categories</p>
             </li>
             {isLoading ? (
               <Loader />
@@ -123,7 +126,8 @@ export const Filters = () => {
                       el === selectedCategories ? styles.selectedCategory : ""
                     }
                   >
-                    {el}
+                    {" "}
+                    <p className={styles.categoriesName}> {el}</p>
                   </li>
                 );
               })
@@ -131,6 +135,34 @@ export const Filters = () => {
           </ul>
         </div>
       </div>
+      {selectedCategorie === "verb" && (
+        <div className={styles.radioButtons}>
+          <input
+            className="custom-radio-filter"
+            type="radio"
+            id="custom-1"
+            name="verbFilter"
+            value="regular"
+            checked={selectedCategoryType === "regular"}
+            onChange={() => setSelectedCategoryType("regular")}
+          />
+          <label htmlFor="custom-1" className={styles.radioInput}>
+            Regular
+          </label>
+          <input
+            className="custom-radio-filter"
+            type="radio"
+            value="irregular"
+            id="custom-2"
+            name="verbFilter"
+            checked={selectedCategoryType === "irregular"}
+            onChange={() => setSelectedCategoryType("irregular")}
+          />
+          <label htmlFor="custom-2" className={styles.radioInput}>
+            Irregular
+          </label>
+        </div>
+      )}
     </div>
   );
 };

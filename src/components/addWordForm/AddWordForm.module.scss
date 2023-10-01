@@ -1,49 +1,15 @@
 @import "../../scss/mixins";
 @import "../../scss/variables";
 
-.filtersWrp {
+.verbCategoriesWrp {
+  position: relative;
   display: flex;
+  flex-direction: column;
   gap: 8px;
 }
-
-.inputWrp {
-  position: relative;
-  width: 274px;
-  input {
-    box-sizing: border-box;
-    width: 100%;
-    border-radius: 15px;
-    border: 1px solid rgba(18, 20, 23, 0.1);
-    background: $pageBgColor;
-    padding: 12px 24px;
-    outline: none;
-    @include font-size(16, 500, 24);
-    &::placeholder {
-      color: $darckTextColor;
-      font-family: inherit;
-      @include font-size(16, 500, 24);
-    }
-    &:hover,
-    &:focus {
-      border: 1px solid $secondaryAccentColor;
-    }
-    &:active {
-      border: 1px solid $mainAccentColor;
-    }
-  }
-}
-
-.inputSvg {
-  position: absolute;
-  background-color: $pageBgColor;
-  width: 20px;
-  height: 20px;
-  top: 16px;
-  right: 25px;
-}
-
 .filterBox {
-  width: 164px;
+  margin-bottom: 18px;
+  width: 204px;
   height: 48px;
   position: relative;
   box-sizing: border-box;
@@ -52,8 +18,8 @@
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 15px;
-  border: 1px solid rgba(18, 20, 23, 0.1);
-  background: $pageBgColor;
+  border: 1px solid rgba(252, 252, 252, 0.3);
+  background: $mainAccentColor;
   color: #8c8c8c;
   @include font-size(16, 400, 24);
   cursor: pointer;
@@ -74,7 +40,6 @@
   top: 57%;
   right: 11%;
   transform: translateY(-50%);
-
   padding: 0;
 }
 
@@ -94,8 +59,8 @@
   align-items: flex-start;
   padding: 20px;
   border-radius: 15px;
-  border: 1px solid rgba(18, 20, 23, 0.1);
-  background: $pageBgColor;
+  border: 1px solid rgba(252, 252, 252, 0.3);
+  background: $mainAccentColor;
   color: #8c8c8c;
   font-size: 16px;
   font-weight: 400;
@@ -141,14 +106,99 @@
 }
 
 .radioButtons {
-  margin-left: 10px;
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-bottom: 39px;
 }
 
 .categoriesName {
   text-transform: capitalize;
-  color: $darckTextColor;
+  color: $lightTextColor;
   @include font-size(16, 500, 24);
+}
+
+.inputSet {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.addWordInputWrp {
+  position: relative;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.addWordInput {
+  box-sizing: border-box;
+  outline: none;
+  width: 354px;
+
+  padding: 16px 18px;
+  border-radius: 15px;
+  border: 1px solid rgba(252, 252, 252, 0.3);
+  background-color: $mainAccentColor;
+  color: $lightTextColor;
+  @include font-size(16, 400, 24);
+}
+
+.addWordLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $lightTextColor;
+  @include font-size(16, 500, 24);
+}
+
+.addWordButtonsWrp {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.addWordButton {
+  width: 245px;
+  box-sizing: border-box;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 30px;
+  background: $lightTextColor;
+  color: $darckTextColor;
+  @include font-size(18, 700, 28);
+  &:hover,
+  &:focus {
+    color: $mainAccentColor;
+  }
+}
+
+.cancelButton {
+  width: 245px;
+  box-sizing: border-box;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 30px;
+  background: $mainAccentColor;
+  color: $lightTextColor;
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  @include font-size(18, 700, 28);
+  &:hover,
+  &:focus {
+    border: 1px solid rgba(252, 252, 252, 0.4);
+    background: #fcfcfc;
+    color: $darckTextColor;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  color: red;
+  top: 52px;
+  @include font-size(10, 400, 28);
+}
+.errorMessageCategory {
+  position: absolute;
+  color: red;
+  top: 43px;
+  @include font-size(10, 400, 28);
 }
