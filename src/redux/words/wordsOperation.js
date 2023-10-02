@@ -42,7 +42,31 @@ export const getCategories = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue({ message: error.message });
+    }
+  }
+);
+
+export const addNewWord = createAsyncThunk(
+  "words/addNewWord",
+  async (newWordData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post("/words/create", newWordData);
+      return data;
+    } catch (error) {
+      return rejectWithValue({ message: error.message });
+    }
+  }
+);
+
+export const getStatistics = createAsyncThunk(
+  "words/getStatistics",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get("/words/statistics");
+      return data;
+    } catch (error) {
+      return rejectWithValue({ message: error.message });
     }
   }
 );

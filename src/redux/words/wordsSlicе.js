@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllWords, getCategories } from "./wordsOperation";
+import { getAllWords, getCategories, getStatistics } from "./wordsOperation";
 
 const initialState = {
   allWords: {
@@ -9,6 +9,7 @@ const initialState = {
     perPage: null,
   },
   categories: null,
+  statistics: null,
   isLoading: false,
 };
 const wordsSlice = createSlice({
@@ -37,6 +38,16 @@ const wordsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getCategories.rejected, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(getStatistics.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getStatistics.fulfilled, (state, { payload }) => {
+        state.statistics = payload;
+        state.isLoading = false;
+      })
+      .addCase(getStatistics.rejected, (state, action) => {
         state.isLoading = false;
       });
   },

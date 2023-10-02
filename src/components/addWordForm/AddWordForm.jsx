@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./AddWordForm.module.scss";
 import "./stylesAddWord.css";
 import { selectCategories } from "../../redux/words/wordsSelector";
@@ -7,8 +7,10 @@ import { nanoid } from "@reduxjs/toolkit";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import ukraine from "../../assets/img/ukraine.png";
 import united from "../../assets/img/united.png";
+import { addNewWord} from "../../redux/words/wordsOperation";
 
 export const AddWordForm = ({ onClose }) => {
+  const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
   const [selectedCategoryType, setSelectedCategoryType] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(false);
@@ -45,32 +47,33 @@ export const AddWordForm = ({ onClose }) => {
       setError({});
     }
 
-    let formData;
+    let newWordData;
     if (selectedCategoryType === "regular") {
-      formData = {
+      newWordData = {
         en: en,
         ua: ua,
         category: selectedCategorie,
         isRegular: isRegular,
       };
     } else if (selectedCategoryType === "irregular") {
-      formData = {
+      newWordData = {
         en: en,
         ua: ua,
         category: selectedCategorie,
         isIrregular: isIrregular,
       };
     } else {
-      formData = {
+      newWordData = {
         en: en,
         ua: ua,
         category: selectedCategorie,
       };
     }
 
-    console.log(formData);
+    console.log(newWordData);
+    dispatch(addNewWord(newWordData));
+ 
     onClose();
-    // dispatch(addWord(formData));
   };
 
   return (

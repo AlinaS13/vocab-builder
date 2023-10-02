@@ -14,11 +14,13 @@ import LoginPage from "./pages/loginPage/LoginPage";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCurrentUser } from "./redux/auth/authOperation";
+import { getStatistics } from "./redux/words/wordsOperation";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentUser());
+    dispatch(getStatistics());
     // eslint-disable-next-line
   }, []);
   return (
