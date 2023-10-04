@@ -6,7 +6,7 @@ import { selectUserWords } from "../../redux/words/wordsSelector";
 
 const DictionaryPage = () => {
   const { results } = useSelector(selectUserWords);
-
+  console.log(results);
   return (
     <div className={styles.dictionaryContainer}>
       <Dashboard />

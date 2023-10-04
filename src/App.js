@@ -28,7 +28,7 @@ function App() {
     }
 
     // eslint-disable-next-line
-  }, []);
+  }, [isAuth]);
   return (
     <div className={styles.container}>
       <Routes>
