@@ -1,26 +1,73 @@
-table {
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.tableWrp {
+  box-sizing: border-box;
+  padding: 18px;
+  border-radius: 15px;
+  background: $mainBgColor;
+}
+.table {
   border-collapse: collapse;
   width: 100%;
 }
-
-table td,
-table th {
-  border: 1px solid #ddd;
-  padding: 8px;
+.thead {
 }
 
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+.trHead {
+  &:nth-child(even) {
+    background-color: rgba(133, 170, 159, 0.1);
+  }
 }
 
-table tr:hover {
-  background-color: #ddd;
-}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+.thHead {
+  outline: none;
+  box-sizing: border-box;
   text-align: left;
   background-color: rgba(133, 170, 159, 0.1);
-  color: #121417;
+  border: 1px solid #dbdbdb;
+  border-top: 0px solid rgba(133, 170, 159, 0.1);
+  padding: 22px;
+  @include font-size(20, 500);
+  color: $darckTextColor;
+  &:first-of-type {
+    border-left: 1px solid transparent;
+    border-top-left-radius: 8px;
+  }
+  &:last-of-type {
+    border-right: 1px solid transparent;
+    border-top-right-radius: 8px;
+  }
+}
+
+.tBody {
+  text-align: left;
+}
+
+.trBody {
+  background: #fcfcfc;
+}
+
+.tdBody {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 22px;
+  @include font-size(20, 500);
+  color: $darckTextColor;
+  &:first-of-type {
+    border-left: 1px solid transparent;
+  }
+  &:last-of-type {
+    border-right: 1px solid transparent;
+  }
+  &:last-of-type {
+    text-align: center;
+  }
+}
+
+.actionBtn {
+  text-align: center;
+  background-color: transparent;
+  color: $darckTextColor;
+  @include font-size(22, 600);
 }

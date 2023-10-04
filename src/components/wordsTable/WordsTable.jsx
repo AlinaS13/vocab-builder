@@ -1,8 +1,17 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./WordsTable.module.scss";
 import { useTable } from "react-table";
 
+import { ActionsModal } from "../actionsModal/ActionsModal";
+
 export const WordsTable = ({ ownWords }) => {
+  const [isOpenActionsModal, setIsOpenActionsModal] = useState(false);
+  const openModalActionsWord = () => setIsOpenActionsModal(true);
+  const closeModalActionsWord = () => setIsOpenActionsModal(false);
+  const handleActions = (row) => {
+    openModalActionsWord();
+    // console.log(row.original._id);
+  };
   const columns = useMemo(
     () => [
       {
@@ -24,6 +33,14 @@ export const WordsTable = ({ ownWords }) => {
       {
         Header: "",
         accessor: "actions",
+        Cell: ({ row }) => (
+          <button
+            className={styles.actionBtn}
+            onClick={() => handleActions(row)}
+          >
+            ...
+          </button>
+        ),
       },
     ],
     []
@@ -38,29 +55,46 @@ export const WordsTable = ({ ownWords }) => {
     });
 
   return (
-    <table {...getTableProps()} className={styles.table}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-              })}
+    <div className={styles.tableWrp}>
+      <table {...getTableProps()} className={styles.table}>
+        <thead className={styles.thead}>
+          {headerGroups.map((headerGroup) => (
+            <tr
+              className={styles.trHead}
+              {...headerGroup.getHeaderGroupProps()}
+            >
+              {headerGroup.headers.map((column) => (
+                <th className={styles.thHead} {...column.getHeaderProps()}>
+                  {column.render("Header")}
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody className={styles.tBody} {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+
+            return (
+              <tr className={styles.trBody} {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td className={styles.tdBody} {...cell.getCellProps()}>
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {isOpenActionsModal && (
+        <ActionsModal
+          isOpen={isOpenActionsModal}
+          onClose={closeModalActionsWord}
+        />
+      )}
+    </div>
   );
 };

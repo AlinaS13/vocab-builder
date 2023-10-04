@@ -198,13 +198,13 @@
 
 .errorMessage {
   position: absolute;
-  color: red;
+  color: #d80027;
   top: 52px;
   @include font-size(10, 400, 28);
 }
 .errorMessageCategory {
   position: absolute;
-  color: red;
+  color: #d80027;
   top: 43px;
   @include font-size(10, 400, 28);
 }
