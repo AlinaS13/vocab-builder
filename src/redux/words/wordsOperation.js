@@ -87,3 +87,28 @@ export const getUserWords = createAsyncThunk(
     }
   }
 );
+
+export const deleteWord = createAsyncThunk(
+  "words/deleteWord",
+  async (currentWordId, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`/words/delete/${currentWordId}`);
+      toast.info("Words was successfully deleted");
+      return data;
+    } catch (error) {
+      return rejectWithValue({ message: error.message });
+    }
+  }
+);
+
+export const editWord = createAsyncThunk(
+  "words/editWord",
+  async (currentWordId, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`/words/delete/${currentWordId}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue({ message: error.message });
+    }
+  }
+);

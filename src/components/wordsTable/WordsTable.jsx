@@ -6,10 +6,14 @@ import { ActionsModal } from "../actionsModal/ActionsModal";
 
 export const WordsTable = ({ ownWords }) => {
   const [isOpenActionsModal, setIsOpenActionsModal] = useState(false);
+  const [currentWordId, setCurrentWordId] = useState(null);
+
   const openModalActionsWord = () => setIsOpenActionsModal(true);
   const closeModalActionsWord = () => setIsOpenActionsModal(false);
+
   const handleActions = (row) => {
     openModalActionsWord();
+    setCurrentWordId(row.original._id);
     // console.log(row.original._id);
   };
   const columns = useMemo(
@@ -93,6 +97,7 @@ export const WordsTable = ({ ownWords }) => {
         <ActionsModal
           isOpen={isOpenActionsModal}
           onClose={closeModalActionsWord}
+          currentWordId={currentWordId}
         />
       )}
     </div>

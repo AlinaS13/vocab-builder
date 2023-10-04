@@ -57,6 +57,11 @@
     gap: 8px;
     color: $darckTextColor;
     @include font-size(16, 500, 24);
+    &:hover,
+    &:focus,
+    &:active {
+      color: $mainAccentColor;
+    }
     svg {
       width: 16px;
       height: 16px;

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styles from "./EditWordModal.module.scss";
 import { RxCross2 } from "react-icons/rx";
-import { AddWordForm } from "../addWordForm/AddWordForm";
+import { EditWordForm } from "../editWordForm/EditWordForm";
 
 export const EditWordModal = ({ isOpen, onClose }) => {
   const closeModal = (e) => {
@@ -33,12 +33,7 @@ export const EditWordModal = ({ isOpen, onClose }) => {
         >
           <RxCross2 color="#ffffff" className={styles.modalCloseSvg} />
         </button>
-        <h2 className={styles.modalTitle}>Add word</h2>
-        <p className={styles.modalText}>
-          Adding a new word to the dictionary is an important step in enriching
-          the language base and expanding the vocabulary.
-        </p>
-        <AddWordForm onClose={onClose} />
+        <EditWordForm onClose={onClose} />
       </div>
     </div>
   );
