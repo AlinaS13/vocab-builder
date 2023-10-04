@@ -7,7 +7,12 @@ import { nanoid } from "@reduxjs/toolkit";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import ukraine from "../../assets/img/ukraine.png";
 import united from "../../assets/img/united.png";
-import { addNewWord} from "../../redux/words/wordsOperation";
+import {
+  addNewWord,
+  getStatistics,
+  getUserWords,
+} from "../../redux/words/wordsOperation";
+import { toast } from "react-toastify";
 
 export const AddWordForm = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -16,7 +21,6 @@ export const AddWordForm = ({ onClose }) => {
   const [selectedCategories, setSelectedCategories] = useState(false);
   const [selectedCategorie, setSelectedCategorie] = useState("Categories");
   const [isIrregular, setIsIrregular] = useState(false);
-  const [isRegular, setIsRegular] = useState(false);
   const [en, setEn] = useState("");
   const [ua, setUa] = useState("");
   const [error, setError] = useState({});
@@ -47,33 +51,37 @@ export const AddWordForm = ({ onClose }) => {
       setError({});
     }
 
-    let newWordData;
-    if (selectedCategoryType === "regular") {
-      newWordData = {
-        en: en,
-        ua: ua,
-        category: selectedCategorie,
-        isRegular: isRegular,
-      };
-    } else if (selectedCategoryType === "irregular") {
-      newWordData = {
-        en: en,
-        ua: ua,
-        category: selectedCategorie,
-        isIrregular: isIrregular,
-      };
-    } else {
-      newWordData = {
-        en: en,
-        ua: ua,
-        category: selectedCategorie,
-      };
-    }
+    try {
+      let newWordData;
+      if (selectedCategoryType === "regular") {
+        newWordData = {
+          en: en,
+          ua: ua,
+          category: selectedCategorie,
+          isIrregular: isIrregular,
+        };
+      } else if (selectedCategoryType === "irregular") {
+        newWordData = {
+          en: en,
+          ua: ua,
+          category: selectedCategorie,
+          isIrregular: isIrregular,
+        };
+      } else {
+        newWordData = {
+          en: en,
+          ua: ua,
+          category: selectedCategorie,
+        };
+      }
+      dispatch(addNewWord(newWordData));
 
-    console.log(newWordData);
-    dispatch(addNewWord(newWordData));
- 
-    onClose();
+      onClose();
+    } catch (error) {
+      if (error.response.status === 401) {
+        toast.error("Such a word exists");
+      }
+    }
   };
 
   return (
@@ -139,7 +147,7 @@ export const AddWordForm = ({ onClose }) => {
               checked={selectedCategoryType === "regular"}
               onChange={() => {
                 setSelectedCategoryType("regular");
-                setIsRegular(true);
+
                 setIsIrregular(false);
               }}
             />
@@ -154,7 +162,6 @@ export const AddWordForm = ({ onClose }) => {
               checked={isIrregular}
               onChange={() => {
                 setSelectedCategoryType("irregular");
-                setIsRegular(false);
                 setIsIrregular(true);
               }}
               name="verbModal"

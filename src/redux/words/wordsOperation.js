@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { toast } from "react-toastify";
+
 export const getWordsByCategory = createAsyncThunk(
   "words/getWordsByCategory",
   async ({ category, query }, { rejectWithValue, dispatch }) => {
@@ -46,12 +48,11 @@ export const getCategories = createAsyncThunk(
     }
   }
 );
-
-export const addNewWord = createAsyncThunk(
-  "words/addNewWord",
-  async (newWordData, { rejectWithValue }) => {
+export const getStatistics = createAsyncThunk(
+  "words/getStatistics",
+  async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/words/create", newWordData);
+      const { data } = await axios.get("/words/statistics");
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message });
@@ -59,11 +60,27 @@ export const addNewWord = createAsyncThunk(
   }
 );
 
-export const getStatistics = createAsyncThunk(
-  "words/getStatistics",
+export const addNewWord = createAsyncThunk(
+  "words/addNewWord",
+  async (newWordData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post("/words/create", newWordData);
+
+      return data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        toast.error("Such a word exists");
+      }
+      return rejectWithValue({ message: error.message });
+    }
+  }
+);
+
+export const getUserWords = createAsyncThunk(
+  "words/getUserWords",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/words/statistics");
+      const { data } = await axios.get("/words/own");
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message });

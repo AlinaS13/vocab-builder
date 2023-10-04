@@ -3,15 +3,15 @@ import { Filters } from "../../components/filters/Filters";
 import styles from "./Dashboard.module.scss";
 import { BsArrowRight } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddWordModal } from "../../components/addWord/AddWordModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { selectStatistics } from "../../redux/words/wordsSelector";
-// import { getStatistics } from "../../redux/words/wordsOperation";
+import { getStatistics } from "../../redux/words/wordsOperation";
 
 export const Dashboard = () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const location = useLocation();
   const statistics = useSelector(selectStatistics);
 

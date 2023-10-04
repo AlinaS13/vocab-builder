@@ -1,8 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllWords, getCategories, getStatistics } from "./wordsOperation";
+import {
+  addNewWord,
+  getAllWords,
+  getCategories,
+  getStatistics,
+  getUserWords,
+} from "./wordsOperation";
 
 const initialState = {
   allWords: {
+    results: [],
+    totalPages: null,
+    page: null,
+    perPage: null,
+  },
+  userWords: {
     results: [],
     totalPages: null,
     page: null,
@@ -48,6 +60,29 @@ const wordsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getStatistics.rejected, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(getUserWords.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserWords.fulfilled, (state, { payload }) => {
+        state.userWords.results = payload.results;
+        state.userWords.totalPages = payload.totalPages;
+        state.userWords.page = payload.page;
+        state.userWords.perPage = payload.perPage;
+        state.isLoading = false;
+      })
+      .addCase(getUserWords.rejected, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(addNewWord.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(addNewWord.fulfilled, (state, { payload }) => {
+        state.statistics.totalCount = state.statistics.totalCount + 1;
+        state.isLoading = false;
+      })
+      .addCase(addNewWord.rejected, (state, action) => {
         state.isLoading = false;
       });
   },

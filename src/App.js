@@ -11,16 +11,22 @@ import DictionaryPage from "./pages/dictionaryPage/DictionaryPage";
 import RecommendPage from "./pages/recommendPage/RecommendPage";
 import TrainingPage from "./pages/trainitgPage/TrainingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCurrentUser } from "./redux/auth/authOperation";
-import { getStatistics } from "./redux/words/wordsOperation";
+import { getStatistics, getUserWords } from "./redux/words/wordsOperation";
+import { getisAuth } from "./redux/auth/authSelector";
 
 function App() {
   const dispatch = useDispatch();
+  const isAuth = useSelector(getisAuth);
   useEffect(() => {
     dispatch(getCurrentUser());
-    dispatch(getStatistics());
+    if (isAuth) {
+      dispatch(getStatistics());
+      dispatch(getUserWords());
+    }
+
     // eslint-disable-next-line
   }, []);
   return (
