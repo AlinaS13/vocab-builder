@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vocab-builder/static/css/main.7b675bea.css",
-    "main.js": "/vocab-builder/static/js/main.9f3571e9.js",
+    "main.css": "/vocab-builder/static/css/main.c404be67.css",
+    "main.js": "/vocab-builder/static/js/main.dc53fabc.js",
     "static/js/787.46fff5b2.chunk.js": "/vocab-builder/static/js/787.46fff5b2.chunk.js",
     "static/media/FixelDisplay-Medium.ttf": "/vocab-builder/static/media/FixelDisplay-Medium.2bf73c318b39b6747802.ttf",
     "static/media/FixelDisplay-SemiBold.ttf": "/vocab-builder/static/media/FixelDisplay-SemiBold.5a60f17e88fec6794428.ttf",
@@ -17,12 +17,12 @@
     "static/media/blood-report.png": "/vocab-builder/static/media/blood-report.4ad425db70f40c8eaeae.png",
     "index.html": "/vocab-builder/index.html",
     "static/media/logo.svg": "/vocab-builder/static/media/logo.e3b0e6323296508368beb4ab5901135c.svg",
-    "main.7b675bea.css.map": "/vocab-builder/static/css/main.7b675bea.css.map",
-    "main.9f3571e9.js.map": "/vocab-builder/static/js/main.9f3571e9.js.map",
+    "main.c404be67.css.map": "/vocab-builder/static/css/main.c404be67.css.map",
+    "main.dc53fabc.js.map": "/vocab-builder/static/js/main.dc53fabc.js.map",
     "787.46fff5b2.chunk.js.map": "/vocab-builder/static/js/787.46fff5b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b675bea.css",
-    "static/js/main.9f3571e9.js"
+    "static/css/main.c404be67.css",
+    "static/js/main.dc53fabc.js"
   ]
 }
