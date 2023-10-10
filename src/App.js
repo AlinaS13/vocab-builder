@@ -64,9 +64,9 @@ function App() {
             </PublicRoute>
           }
         />
-
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
       <ToastContainer
         position="top-right"
         autoClose={2500}

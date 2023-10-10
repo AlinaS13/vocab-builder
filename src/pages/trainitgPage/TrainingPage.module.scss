@@ -18,3 +18,86 @@
     padding-right: 100px;
   }
 }
+
+.dictionaryContainer {
+  min-height: 100vh;
+  background-color: $pageBgColor;
+  padding-top: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 48px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding-top: 80px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+.dictionaryWelcomeContainer {
+  min-height: 100vh;
+  background-color: $pageBgColor;
+  padding-top: 193px;
+}
+
+.contentWrp {
+  display: flex;
+  align-items: center;
+  width: 900px;
+  margin: 0 auto;
+  gap: 32px;
+}
+.contentBox {
+  padding: 10px;
+  h2 {
+    color: $darckTextColor;
+    @include font-size(20, 500, 30);
+    margin-bottom: 32px;
+  }
+  p {
+    color: $darckTextColor;
+    @include font-size(16, 400, 24);
+    margin-bottom: 64px;
+  }
+}
+
+.buttonWrp {
+  display: flex;
+  gap: 10px;
+}
+
+.addButton {
+  width: 215px;
+  box-sizing: border-box;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 30px;
+  border: 1px solid #85aa9f;
+  background: $mainAccentColor;
+  color: $lightTextColor;
+
+  @include font-size(18, 700, 28);
+  &:hover,
+  &:focus {
+    background: $pageBgColor;
+    color: $mainAccentColor;
+  }
+}
+.cancelButton {
+  width: 215px;
+  box-sizing: border-box;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 30px;
+  background: $pageBgColor;
+  color: $mainAccentColor;
+  border: 1px solid $mainAccentColor;
+  @include font-size(18, 700, 28);
+  &:hover,
+  &:focus {
+    background: $mainAccentColor;
+    color: $lightTextColor;
+  }
+}

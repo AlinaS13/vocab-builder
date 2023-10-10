@@ -7,3 +7,6 @@ export const selectStatistics = (state) => state.words.statistics;
 export const selectUserWords = (state) => state.words.userWords;
 
 export const isLoadingWords = (state) => state.words.isLoading;
+
+export const selectIsModalAddWordOpen = (state) =>
+  state.words.isModalAddWordOpen;

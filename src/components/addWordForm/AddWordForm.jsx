@@ -9,8 +9,9 @@ import ukraine from "../../assets/img/ukraine.png";
 import united from "../../assets/img/united.png";
 import { addNewWord, getCategories } from "../../redux/words/wordsOperation";
 import { toast } from "react-toastify";
+import { closeModalAddWord } from "../../redux/words/wordsSlicе";
 
-export const AddWordForm = ({ onClose }) => {
+export const AddWordForm = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
   const [selectedCategoryType, setSelectedCategoryType] = useState(null);
@@ -77,8 +78,8 @@ export const AddWordForm = ({ onClose }) => {
         };
       }
       dispatch(addNewWord(newWordData));
-
-      onClose();
+      dispatch(closeModalAddWord());
+      // onClose();
     } catch (error) {
       if (error.response.status === 401) {
         toast.error("Such a word exists");
@@ -224,7 +225,11 @@ export const AddWordForm = ({ onClose }) => {
         <button className={styles.addWordButton} type="submit">
           Add
         </button>
-        <button className={styles.cancelButton} type="button" onClick={onClose}>
+        <button
+          className={styles.cancelButton}
+          type="button"
+          onClick={() => dispatch(closeModalAddWord())}
+        >
           Cancel
         </button>
       </div>

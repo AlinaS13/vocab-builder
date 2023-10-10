@@ -25,10 +25,19 @@ const initialState = {
   categories: null,
   statistics: null,
   isLoading: false,
+  isModalAddWordOpen: false,
 };
 const wordsSlice = createSlice({
   name: "words",
   initialState,
+  reducers: {
+    openModalAddWord(state) {
+      state.isModalAddWordOpen = true;
+    },
+    closeModalAddWord(state) {
+      state.isModalAddWordOpen = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllWords.pending, (state, action) => {
@@ -112,5 +121,6 @@ const wordsSlice = createSlice({
       });
   },
 });
+export const { openModalAddWord, closeModalAddWord } = wordsSlice.actions;
 
 export default wordsSlice.reducer;

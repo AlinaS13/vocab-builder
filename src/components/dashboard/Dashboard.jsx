@@ -7,17 +7,22 @@ import { useEffect, useState } from "react";
 import { AddWordModal } from "../../components/addWord/AddWordModal";
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectStatistics } from "../../redux/words/wordsSelector";
+import {
+  selectIsModalAddWordOpen,
+  selectStatistics,
+} from "../../redux/words/wordsSelector";
 import { getStatistics } from "../../redux/words/wordsOperation";
+import { openModalAddWord } from "../../redux/words/wordsSlicе";
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const statistics = useSelector(selectStatistics);
+  const isModalAddWordOpen = useSelector(selectIsModalAddWordOpen);
 
-  const [isOpenAddModal, setIsOpenAddModal] = useState(false);
-  const openModalAddWord = () => setIsOpenAddModal(true);
-  const closeModalAddWord = () => setIsOpenAddModal(false);
+  // const [isOpenAddModal, setIsOpenAddModal] = useState(false);
+  // const openModalAddWord = () => setIsOpenAddModal(true);
+  // const closeModalAddWord = () => setIsOpenAddModal(false);
 
   const isDictionaryPage = location.pathname === "/dictionary";
   //   useEffect(() => {
@@ -38,13 +43,15 @@ export const Dashboard = () => {
             <button
               className={styles.dashboardAddBtn}
               type="button"
-              onClick={openModalAddWord}
+              onClick={() => dispatch(openModalAddWord())}
             >
               Add word <AiOutlinePlus color="#85AA9F" />
             </button>
           )}
-          {isOpenAddModal && (
-            <AddWordModal isOpen={isOpenAddModal} onClose={closeModalAddWord} />
+          {isModalAddWordOpen && (
+            <AddWordModal
+            // isOpen={isOpenAddModal} onClose={closeModalAddWord}
+            />
           )}
           <NavLink className={styles.dashboardlink} to="/training">
             Train oneself <BsArrowRight color="#85AA9F" />
