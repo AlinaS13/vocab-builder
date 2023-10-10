@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vocab-builder/static/css/main.1c830282.css",
-    "main.js": "/vocab-builder/static/js/main.2d3dcd62.js",
+    "main.css": "/vocab-builder/static/css/main.7b675bea.css",
+    "main.js": "/vocab-builder/static/js/main.9f3571e9.js",
     "static/js/787.46fff5b2.chunk.js": "/vocab-builder/static/js/787.46fff5b2.chunk.js",
     "static/media/FixelDisplay-Medium.ttf": "/vocab-builder/static/media/FixelDisplay-Medium.2bf73c318b39b6747802.ttf",
     "static/media/FixelDisplay-SemiBold.ttf": "/vocab-builder/static/media/FixelDisplay-SemiBold.5a60f17e88fec6794428.ttf",
@@ -14,14 +14,15 @@
     "static/media/FixelDisplay-Bold.woff2": "/vocab-builder/static/media/FixelDisplay-Bold.dcc3807da8e7f0dce39e.woff2",
     "static/media/FixelDisplay-Medium.woff2": "/vocab-builder/static/media/FixelDisplay-Medium.366a8327f2faf30683f7.woff2",
     "static/media/FixelDisplay-Regular.woff2": "/vocab-builder/static/media/FixelDisplay-Regular.12dbc6ce12689796383f.woff2",
+    "static/media/blood-report.png": "/vocab-builder/static/media/blood-report.4ad425db70f40c8eaeae.png",
     "index.html": "/vocab-builder/index.html",
     "static/media/logo.svg": "/vocab-builder/static/media/logo.e3b0e6323296508368beb4ab5901135c.svg",
-    "main.1c830282.css.map": "/vocab-builder/static/css/main.1c830282.css.map",
-    "main.2d3dcd62.js.map": "/vocab-builder/static/js/main.2d3dcd62.js.map",
+    "main.7b675bea.css.map": "/vocab-builder/static/css/main.7b675bea.css.map",
+    "main.9f3571e9.js.map": "/vocab-builder/static/js/main.9f3571e9.js.map",
     "787.46fff5b2.chunk.js.map": "/vocab-builder/static/js/787.46fff5b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c830282.css",
-    "static/js/main.2d3dcd62.js"
+    "static/css/main.7b675bea.css",
+    "static/js/main.9f3571e9.js"
   ]
 }
