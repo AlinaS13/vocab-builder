@@ -40,7 +40,6 @@ export const ActionsModal = ({ isOpen, onClose, currentWordId }) => {
             type="button"
             onClick={() => {
               openModalEditWord();
-              console.log("edit");
             }}
           >
             <FiEdit2 color="85AA9F" />

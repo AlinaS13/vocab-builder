@@ -6,11 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { getAllWords, getCategories } from "../../redux/words/wordsOperation";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  isLoadingWords,
-  selectCategories,
-} from "../../redux/words/wordsSelector";
-import { Loader } from "../loader/Loader";
+import { selectCategories } from "../../redux/words/wordsSelector";
 import { nanoid } from "@reduxjs/toolkit";
 import { testGetisAuth } from "../../redux/auth/authSelector";
 
@@ -18,7 +14,6 @@ export const Filters = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(testGetisAuth);
   const categories = useSelector(selectCategories);
-  const isLoading = useSelector(isLoadingWords);
   const [selectedCategoryType, setSelectedCategoryType] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(false);
   const [selectedCategorie, setSelectedCategorie] = useState("Categories");
@@ -109,10 +104,7 @@ export const Filters = () => {
               {" "}
               <p className={styles.categoriesName}> Categories</p>
             </li>
-            {isLoading ? (
-              <Loader />
-            ) : (
-              categories &&
+            {categories &&
               categories.map((el) => {
                 return (
                   <li
@@ -130,8 +122,7 @@ export const Filters = () => {
                     <p className={styles.categoriesName}> {el}</p>
                   </li>
                 );
-              })
-            )}
+              })}
           </ul>
         </div>
       </div>

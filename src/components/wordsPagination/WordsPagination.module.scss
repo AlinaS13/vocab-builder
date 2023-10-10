@@ -1,0 +1,51 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.paginationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  color: $darckTextColor;
+  background: $pageBgColor;
+  fill: #121417;
+  @include font-size(13, 600);
+  &:hover,
+  &:focus {
+    color: $mainAccentColor;
+    fill: $mainAccentColor;
+  }
+  &:active {
+    background-color: $mainAccentColor;
+    color: $lightTextColor;
+  }
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.currentPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $mainAccentColor;
+  color: $lightTextColor;
+  margin: 0;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid $mainAccentColor;
+  @include font-size(13, 600);
+}

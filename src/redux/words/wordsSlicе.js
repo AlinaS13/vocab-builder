@@ -13,14 +13,14 @@ const initialState = {
   allWords: {
     results: [],
     totalPages: null,
-    page: null,
-    perPage: null,
+    page: 1,
+    perPage: 7,
   },
   userWords: {
     results: [],
     totalPages: null,
-    page: null,
-    perPage: null,
+    page: 1,
+    perPage: 7,
   },
   categories: null,
   statistics: null,
@@ -35,24 +35,27 @@ const wordsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getAllWords.fulfilled, (state, { payload }) => {
-        state.allWords.results.push(...payload.results);
-        state.allWords.totalPages = payload.totalPages;
-        state.allWords.page = payload.page;
-        state.allWords.perPage = payload.perPage;
+        state.allWords = {
+          ...state.allWords,
+          results: [...state.allWords.results, ...payload.results],
+          totalPages: payload.totalPages,
+          page: payload.page,
+          perPage: payload.perPage,
+        };
         state.isLoading = false;
       })
       .addCase(getAllWords.rejected, (state, action) => {
         state.isLoading = false;
       })
       .addCase(getCategories.pending, (state, action) => {
-        state.isLoading = true;
+        // state.isLoading = true;
       })
       .addCase(getCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
-        state.isLoading = false;
+        // state.isLoading = false;
       })
       .addCase(getCategories.rejected, (state, action) => {
-        state.isLoading = false;
+        // state.isLoading = false;
       })
       .addCase(getStatistics.pending, (state, action) => {
         state.isLoading = true;

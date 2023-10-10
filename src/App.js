@@ -16,15 +16,19 @@ import { useEffect } from "react";
 import { getCurrentUser } from "./redux/auth/authOperation";
 import { getStatistics, getUserWords } from "./redux/words/wordsOperation";
 import { getisAuth } from "./redux/auth/authSelector";
+import { selectUserWords } from "./redux/words/wordsSelector";
 
 function App() {
   const dispatch = useDispatch();
+  const userWords = useSelector(selectUserWords);
   const isAuth = useSelector(getisAuth);
   useEffect(() => {
     dispatch(getCurrentUser());
     if (isAuth) {
       dispatch(getStatistics());
-      dispatch(getUserWords());
+      dispatch(
+        getUserWords({ page: userWords.page, perPage: userWords.perPage })
+      );
     }
 
     // eslint-disable-next-line

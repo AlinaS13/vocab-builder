@@ -75,18 +75,30 @@ export const addNewWord = createAsyncThunk(
     }
   }
 );
-
 export const getUserWords = createAsyncThunk(
   "words/getUserWords",
-  async (_, { rejectWithValue }) => {
+  async ({ page, perPage }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/words/own");
+      const { data } = await axios.get("/words/own", {
+        params: { page, perPage },
+      });
       return data;
     } catch (error) {
-      return rejectWithValue({ message: error.message });
+      return rejectWithValue(error.message);
     }
   }
 );
+// export const getUserWords = createAsyncThunk(
+//   "words/getUserWords",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const { data } = await axios.get("/words/own");
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue({ message: error.message });
+//     }
+//   }
+// );
 
 export const deleteWord = createAsyncThunk(
   "words/deleteWord",

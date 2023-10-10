@@ -3,6 +3,7 @@ import styles from "./WordsTable.module.scss";
 import { useTable } from "react-table";
 
 import { ActionsModal } from "../actionsModal/ActionsModal";
+import { ProgressBar } from "../progressBar/ProgressBar";
 
 export const WordsTable = ({ ownWords }) => {
   const [isOpenActionsModal, setIsOpenActionsModal] = useState(false);
@@ -33,6 +34,7 @@ export const WordsTable = ({ ownWords }) => {
       {
         Header: "Progress",
         accessor: "progress",
+        Cell: ({ cell }) => <ProgressBar value={cell.value} />,
       },
       {
         Header: "",

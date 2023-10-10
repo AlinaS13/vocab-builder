@@ -2,16 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./AddWordForm.module.scss";
 import "./stylesAddWord.css";
 import { selectCategories } from "../../redux/words/wordsSelector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import ukraine from "../../assets/img/ukraine.png";
 import united from "../../assets/img/united.png";
-import {
-  addNewWord,
-  getStatistics,
-  getUserWords,
-} from "../../redux/words/wordsOperation";
+import { addNewWord, getCategories } from "../../redux/words/wordsOperation";
 import { toast } from "react-toastify";
 
 export const AddWordForm = ({ onClose }) => {
@@ -26,9 +22,15 @@ export const AddWordForm = ({ onClose }) => {
   const [error, setError] = useState({});
 
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+
   const hendleOpenCategoriesList = () => {
     setIsCategoriesOpen(!isCategoriesOpen);
   };
+  useEffect(() => {
+    if (isCategoriesOpen) {
+      dispatch(getCategories());
+    }
+  }, [dispatch, isCategoriesOpen]);
   const enPattern = "\\b[A-Za-z'-]+(?:\\s+[A-Za-z'-]+)*\\b";
   const uaPattern = "^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\\s]+$";
 

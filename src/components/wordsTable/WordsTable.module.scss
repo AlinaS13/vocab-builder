@@ -6,6 +6,7 @@
   padding: 18px;
   border-radius: 15px;
   background: $mainBgColor;
+  margin-bottom: 28px;
 }
 .table {
   border-collapse: collapse;
@@ -21,6 +22,7 @@
 }
 
 .thHead {
+  position: relative;
   outline: none;
   box-sizing: border-box;
   text-align: left;
@@ -33,6 +35,28 @@
   &:first-of-type {
     border-left: 1px solid transparent;
     border-top-left-radius: 8px;
+    &::before {
+      position: absolute;
+      content: "";
+      background-repeat: no-repeat;
+      background-image: url(../../assets/img/united.png);
+      left: 88%;
+      top: 27%;
+      width: 32px;
+      height: 32px;
+    }
+  }
+  &:nth-child(2) {
+    &::before {
+      position: absolute;
+      content: "";
+      background-repeat: no-repeat;
+      background-image: url(../../assets/img/ukraine.png);
+      left: 80%;
+      top: 27%;
+      width: 32px;
+      height: 32px;
+    }
   }
   &:last-of-type {
     border-right: 1px solid transparent;
@@ -70,4 +94,9 @@
   background-color: transparent;
   color: $darckTextColor;
   @include font-size(22, 600);
+  &:hover,
+  &:focus,
+  &:active {
+    color: $mainAccentColor;
+  }
 }
