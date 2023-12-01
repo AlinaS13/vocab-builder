@@ -8,11 +8,11 @@ import { getAllWords, getCategories } from "../../redux/words/wordsOperation";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../redux/words/wordsSelector";
 import { nanoid } from "@reduxjs/toolkit";
-import { testGetisAuth } from "../../redux/auth/authSelector";
+import { getisAuth} from "../../redux/auth/authSelector";
 
 export const Filters = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(testGetisAuth);
+  const isLoggedIn = useSelector(getisAuth);
   const categories = useSelector(selectCategories);
   const [selectedCategoryType, setSelectedCategoryType] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(false);

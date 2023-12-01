@@ -1,0 +1,176 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.progressCircularWrp {
+  display: flex;
+  justify-content: flex-end;
+}
+.trainingRoomWrp {
+  position: relative;
+  box-sizing: border-box;
+  padding: 18px;
+  border-radius: 15px;
+  background: $mainBgColor;
+  margin-bottom: 80px;
+}
+
+.trainingTextariaWrp {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background: #fcfcfc;
+}
+
+.trainingTextarea {
+  width: 100%;
+  height: 302px;
+  background: #fcfcfc;
+  border: transparent;
+  padding: 22px;
+  color: #121417;
+  @include font-size(20, 500, 30);
+  font-family: "Fixel Display";
+  resize: none;
+  outline: none;
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible {
+    border: transparent;
+  }
+  &::-webkit-input-placeholder {
+    opacity: 1;
+    color: #121417;
+    @include font-size(20, 500, 30);
+    font-family: "Fixel Display";
+  }
+  &::-moz-placeholder {
+    opacity: 1;
+    color: #121417;
+    @include font-size(20, 500, 30);
+    font-family: "Fixel Display";
+  }
+  &:-moz-placeholder {
+    opacity: 1;
+    color: #121417;
+    @include font-size(20, 500, 30);
+    font-family: "Fixel Display";
+  }
+  &:-ms-input-placeholder {
+    opacity: 1;
+    color: #121417;
+    @include font-size(20, 500, 30);
+    font-family: "Fixel Display";
+  }
+  &:-ms-input-placeholder {
+    opacity: 1;
+    color: #121417;
+    @include font-size(20, 500, 30);
+    font-family: "Fixel Display";
+  }
+}
+.trainingTask {
+  display: flex;
+  box-sizing: border-box;
+  padding: 22px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-left: 1px solid #dbdbdb;
+}
+
+.translateLanguageMarkerWrp {
+  position: relative;
+}
+.nextBtn {
+  position: absolute;
+  padding: 0;
+  left: 40px;
+  bottom: 36px;
+  background: transparent;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: rgba(18, 20, 23, 0.5);
+  @include font-size(16, 500);
+  &:hover,
+  &:focus,
+  &:active {
+    color: $mainAccentColor;
+  }
+}
+
+.trainingTaskWord {
+  color: #121417;
+  @include font-size(20, 500, 30);
+}
+
+.actionTasksButtonsWrp {
+  display: flex;
+  gap: 20px;
+}
+
+.saveTaskButton {
+  box-sizing: border-box;
+  padding: 14px 80px;
+  border-radius: 30px;
+  background: $mainAccentColor;
+  color: $lightTextColor;
+  @include font-size(18, 700, 28);
+  &:disabled {
+    pointer-events: none;
+    background: #a5c0b8;
+  }
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    background: $lightTextColor;
+    color: $mainAccentColor;
+    border: 1px solid $mainAccentColor;
+    // background: #a5c0b8;
+  }
+}
+
+.cancelTaskButton {
+  text-align: center;
+  width: 245px;
+  box-sizing: border-box;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 30px;
+  background: $lightTextColor;
+  color: $mainAccentColor;
+  border: 1px solid $mainAccentColor;
+  @include font-size(18, 700, 28);
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    border: 1px solid $mainAccentColor;
+    background: $mainAccentColor;
+    color: $lightTextColor;
+  }
+}
+
+.languageTitle {
+  color: $darckTextColor;
+  @include font-size(16, 500, 24);
+}
+.translateLanguageMarker {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.taskLanguageMarker {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  // top: 20px;
+  // right: 20px;
+}

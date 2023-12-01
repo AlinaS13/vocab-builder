@@ -78,8 +78,8 @@ export const AddWordForm = () => {
         };
       }
       dispatch(addNewWord(newWordData));
+      toast.success("Word successfully added");
       dispatch(closeModalAddWord());
-      // onClose();
     } catch (error) {
       if (error.response.status === 401) {
         toast.error("Such a word exists");

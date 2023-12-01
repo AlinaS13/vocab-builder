@@ -72,8 +72,8 @@ export const WordsPagination = ({ page, totalPages, onPageChange }) => {
         </button>
       )}
       <button
-        onClick={() => onPageChange(totalPages)}
         className={styles.paginationButton}
+        onClick={() => onPageChange(totalPages)}
       >
         {<MdOutlineKeyboardDoubleArrowRight />}
       </button>

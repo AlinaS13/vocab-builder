@@ -1,41 +1,55 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { clearAuthHeader, setAuthHeader } from "../../api";
-import axios from "axios";
+// import axios from "axios";
+import { instance } from "../../api";
 
 // import { useDispatch } from "react-redux";
 // import { getAllWords, getCategories } from "../words/wordsOperation";
 
-export const registrationUser = createAsyncThunk(
-  "auth/registrationUser",
-  async ({ rejectWithValue, ...userData }) => {
-    const params = {
-      url: "/users/signup",
-      method: "POST",
-      data: userData,
-    };
-    return axios(params)
-      .then((response) => {
-        setAuthHeader(response.data.token);
-        return response.data;
-      })
+// export const registrationUser = createAsyncThunk(
+//   "auth/registration",
+//   async ({ rejectWithValue, ...userData }) => {
+//     const params = {
+//       url: "/users/signup",
+//       method: "POST",
+//       data: userData,
+//     };
+//     return axios(params)
+//       .then((response) => {
+//         setAuthHeader(response.data.token);
+//         return response.data;
+//       })
 
-      .catch((error) => {
-        if (error.response.status === 409) {
-          toast.error("Such email already exists");
-        }
-        return rejectWithValue(error.message);
-      });
+//       .catch((error) => {
+//         if (error.response.status === 409) {
+//           toast.error("Such email already exists");
+//         }
+//         return rejectWithValue(error.message);
+//       });
+//   }
+// );
+
+export const registrationUser = createAsyncThunk(
+  "auth/registration",
+  async ({ rejectWithValue, ...userData }) => {
+    try {
+      const { data } = await instance.post("users/signup", userData);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
 export const loginUser = createAsyncThunk(
-  "auth/loginUser",
+  "auth/login",
   async ({ rejectWithValue, ...userData }) => {
     try {
       const {
         data: { email, password, name, token },
-      } = await axios.post(`/users/signin`, userData);
+      } = await instance.post("/users/signin", userData);
 
       setAuthHeader(token);
       return { email, password, name, token };
@@ -47,12 +61,10 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk(
-  "auth/logoutUser",
-  async (_, { rejectWithValue, getState }) => {
-    const { token } = getState().auth;
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
     try {
-      setAuthHeader(token);
-      const { data } = await axios.post(`/users/signout`, token);
+      const { data } = instance.post("/users/signout");
       clearAuthHeader();
       toast.info("Bye! See you soon!");
       return data;
@@ -62,26 +74,48 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
+// export const getCurrentUser = createAsyncThunk(
+//   "auth/getCurrentUser",
+//   async (_, { rejectWithValue, getState }) => {
+//     const state = getState();
+
+//     const persistedToken = state.auth.token;
+
+//     if (persistedToken === null) {
+//       return rejectWithValue();
+//     }
+
+//     setAuthHeader(persistedToken);
+
+//     try {
+//       const { data } = await axios.get("/users/current", persistedToken);
+//       // useDispatch(getCategories);
+//       // useDispatch(getAllWords);
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue(error);
+//     }
+//   }
+// );
+
 export const getCurrentUser = createAsyncThunk(
-  "auth/refresh",
+  "auth/current",
   async (_, { rejectWithValue, getState }) => {
-    const state = getState();
-
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
-      return rejectWithValue();
+    const { token } = getState().auth;
+    if (!token) {
+      return rejectWithValue("Unable to fetch user");
     }
-
-    setAuthHeader(persistedToken);
-
     try {
-      const { data } = await axios.get("/users/current");
-      // useDispatch(getCategories);
-      // useDispatch(getAllWords);
+      setAuthHeader(token);
+      const { data } = await instance.get("/users/current");
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      if (error.response.status === 401) {
+        clearAuthHeader();
+        window.localStorage.clear();
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );

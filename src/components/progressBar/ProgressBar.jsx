@@ -1,7 +1,7 @@
 import * as React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Typography } from "@mui/material";
-import styles from "./ProgressBar.module.scss";
+
 export const ProgressBar = ({ value }) => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>

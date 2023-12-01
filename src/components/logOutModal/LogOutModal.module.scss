@@ -108,12 +108,9 @@
   border-radius: 20px;
   color: $lightTextColor;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
+  @include font-size(18, 700, 28);
   text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+
   @media screen and (min-width: 768px) {
     width: 200px;
     font-size: 16px;
@@ -136,12 +133,9 @@
   border: 1px solid $secondaryAccentColor;
   border-radius: 20px;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
+  @include font-size(18, 700, 28);
   text-align: center;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+
   color: $mainAccentColor;
   @media screen and (min-width: 768px) {
     width: 200px;

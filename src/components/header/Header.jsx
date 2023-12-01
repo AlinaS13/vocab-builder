@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { LuLogOut } from "react-icons/lu";
 
 import {
-  getisAuth,
   getUserName,
   selectIsModalOpen,
+  getisAuth,
 } from "../../redux/auth/authSelector";
 import { openModalLogOut } from "../../redux/auth/authSlicе";
 import { LogOutModal } from "../logOutModal/LogOutModal";

@@ -3,7 +3,7 @@ import styles from "./EditWordModal.module.scss";
 import { RxCross2 } from "react-icons/rx";
 import { EditWordForm } from "../editWordForm/EditWordForm";
 
-export const EditWordModal = ({ isOpen, onClose }) => {
+export const EditWordModal = ({ isOpen, onClose, currentWord }) => {
   const closeModal = (e) => {
     if (e.code === "Escape" || e.currentTarget === e.target) {
       onClose();
@@ -33,7 +33,7 @@ export const EditWordModal = ({ isOpen, onClose }) => {
         >
           <RxCross2 color="#ffffff" className={styles.modalCloseSvg} />
         </button>
-        <EditWordForm onClose={onClose} />
+        <EditWordForm onClose={onClose} currentWord={currentWord} />
       </div>
     </div>
   );

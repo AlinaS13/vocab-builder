@@ -4,10 +4,19 @@ import { useTable } from "react-table";
 
 import { ActionsModal } from "../actionsModal/ActionsModal";
 import { ProgressBar } from "../progressBar/ProgressBar";
+import { useLocation } from "react-router-dom";
+import { BsArrowRight } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { addWordsById } from "../../redux/words/wordsOperation";
+import { toast } from "react-toastify";
 
-export const WordsTable = ({ ownWords }) => {
+export const WordsTable = ({ ownWords, allWordss }) => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const isDictionaryPage = location.pathname === "/dictionary";
   const [isOpenActionsModal, setIsOpenActionsModal] = useState(false);
   const [currentWordId, setCurrentWordId] = useState(null);
+  const [currentWord, setCurrentWord] = useState(null);
 
   const openModalActionsWord = () => setIsOpenActionsModal(true);
   const closeModalActionsWord = () => setIsOpenActionsModal(false);
@@ -15,7 +24,12 @@ export const WordsTable = ({ ownWords }) => {
   const handleActions = (row) => {
     openModalActionsWord();
     setCurrentWordId(row.original._id);
-    // console.log(row.original._id);
+    setCurrentWord(row.original);
+  };
+
+  const handleAddToDictionary = (row) => {
+    dispatch(addWordsById(row.original._id));
+    toast.success("Word successfully added to dictionary");
   };
   const columns = useMemo(
     () => [
@@ -31,33 +45,70 @@ export const WordsTable = ({ ownWords }) => {
         Header: "Category",
         accessor: "category",
       },
-      {
-        Header: "Progress",
-        accessor: "progress",
-        Cell: ({ cell }) => <ProgressBar value={cell.value} />,
-      },
-      {
-        Header: "",
-        accessor: "actions",
-        Cell: ({ row }) => (
-          <button
-            className={styles.actionBtn}
-            onClick={() => handleActions(row)}
-          >
-            ...
-          </button>
-        ),
-      },
+      ...(isDictionaryPage
+        ? [
+            {
+              Header: "Progress",
+              accessor: "progress",
+              Cell: ({ cell }) => <ProgressBar value={cell.value} />,
+            },
+            {
+              Header: "",
+              accessor: "actions",
+              Cell: ({ row }) => (
+                <button
+                  className={styles.actionBtn}
+                  onClick={() => handleActions(row)}
+                >
+                  ...
+                </button>
+              ),
+            },
+          ]
+        : [
+            {
+              Header: "",
+              accessor: "addToDictionary",
+              Cell: ({ row }) => (
+                <button
+                  className={styles.addToDictionaryBtn}
+                  onClick={() => handleAddToDictionary(row)}
+                >
+                  Add to Dictionary <BsArrowRight color="#85AA9F" />
+                </button>
+              ),
+            },
+          ]),
+
+      // {
+      //   Header: "Progress",
+      //   accessor: "progress",
+      //   Cell: ({ cell }) => <ProgressBar value={cell.value} />,
+      // },
+      // {
+      //   Header: "",
+      //   accessor: "actions",
+      //   Cell: ({ row }) => (
+      //     <button
+      //       className={styles.actionBtn}
+      //       onClick={() => handleActions(row)}
+      //     >
+      //       ...
+      //     </button>
+      //   ),
+      // },
     ],
-    []
+    // eslint-disable-next-line
+    [isDictionaryPage]
   );
 
   const data = useMemo(() => [ownWords], [ownWords]);
-
+  const dataRecomend = useMemo(() => [allWordss], [allWordss]);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns,
-      data: data[0],
+      data: isDictionaryPage ? data[0] : dataRecomend[0],
+      // data: data[0],
     });
 
   return (
@@ -100,6 +151,7 @@ export const WordsTable = ({ ownWords }) => {
           isOpen={isOpenActionsModal}
           onClose={closeModalActionsWord}
           currentWordId={currentWordId}
+          currentWord={currentWord}
         />
       )}
     </div>

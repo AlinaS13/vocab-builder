@@ -1,17 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "./EditWordForm.module.scss";
-import { selectCategories } from "../../redux/words/wordsSelector";
 import { useState } from "react";
-import { nanoid } from "@reduxjs/toolkit";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+
 import ukraine from "../../assets/img/ukraine.png";
 import united from "../../assets/img/united.png";
-import { addNewWord } from "../../redux/words/wordsOperation";
+import { editWord } from "../../redux/words/wordsOperation";
 import { toast } from "react-toastify";
 
-export const EditWordForm = ({ onClose }) => {
+export const EditWordForm = ({ onClose, currentWord }) => {
   const dispatch = useDispatch();
-
   const [en, setEn] = useState("");
   const [ua, setUa] = useState("");
   const [error, setError] = useState({});
@@ -36,28 +33,37 @@ export const EditWordForm = ({ onClose }) => {
     }
 
     try {
-      let newWordData;
+      let editWordData;
       if (true) {
-        newWordData = {
-          en: en,
-          ua: ua,
+        editWordData = {
+          id: currentWord._id,
+          data: {
+            en: en,
+            ua: ua,
+            category: currentWord.category,
+            isIrregular: currentWord.isIrregular,
+          },
         };
       } else if (true) {
-        newWordData = {
+        editWordData = {
           en: en,
           ua: ua,
+          id: currentWord._id,
         };
       } else {
-        newWordData = {
+        editWordData = {
           en: en,
           ua: ua,
+          id: currentWord._id,
         };
       }
-      dispatch(addNewWord(newWordData));
+
+      dispatch(editWord(editWordData));
+      toast.success("Word successfully edited");
       onClose();
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error("gfgfgfggfgfg");
+        toast.error("Error: " + error.response.status);
       }
     }
   };
@@ -70,7 +76,7 @@ export const EditWordForm = ({ onClose }) => {
             className={styles.addWordInput}
             id="ua"
             type="text"
-            value={ua}
+            defaultValue={currentWord.ua}
             onChange={(e) => {
               setUa(e.target.value);
               setError({});
@@ -90,7 +96,7 @@ export const EditWordForm = ({ onClose }) => {
             className={styles.addWordInput}
             id="en"
             type="text"
-            value={en}
+            defaultValue={currentWord.en}
             onChange={(e) => {
               setEn(e.target.value);
               setError({});
@@ -108,7 +114,7 @@ export const EditWordForm = ({ onClose }) => {
 
       <div className={styles.addWordButtonsWrp}>
         <button className={styles.addWordButton} type="submit">
-          Add
+          Save
         </button>
         <button className={styles.cancelButton} type="button" onClick={onClose}>
           Cancel

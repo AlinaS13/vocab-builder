@@ -1,0 +1,20 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.progressCircular {
+  margin-bottom: 16px;
+}
+
+.progressValue {
+  color: #121417;
+  font-family: "Fixel Display";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+.progressCircul {
+  color: #85aa9f;
+  box-shadow: inset 0 0 0px 3px #ffffff;
+  border-radius: 100%;
+}

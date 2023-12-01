@@ -1,11 +1,16 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://vocab-builder-backend.p.goit.global/api";
+export const instance = axios.create({
+  baseURL: "https://vocab-builder-backend.p.goit.global/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
 export const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
+  instance.defaults.headers.common["Authorization"] = ``;
 };

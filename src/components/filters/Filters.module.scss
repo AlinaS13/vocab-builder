@@ -18,10 +18,40 @@
     padding: 12px 24px;
     outline: none;
     @include font-size(16, 500, 24);
-    &::placeholder {
-      color: $darckTextColor;
-      font-family: inherit;
+    // &::placeholder {
+    //   color: $darckTextColor;
+    //   font-family: inherit;
+    //   @include font-size(16, 500, 24);
+    // }
+    &::-webkit-input-placeholder {
+      opacity: 1;
+      color: #121417;
       @include font-size(16, 500, 24);
+      font-family: "Fixel Display";
+    }
+    &::-moz-placeholder {
+      opacity: 1;
+      color: #121417;
+      @include font-size(16, 500, 24);
+      font-family: "Fixel Display";
+    }
+    &:-moz-placeholder {
+      opacity: 1;
+      color: #121417;
+      @include font-size(16, 500, 24);
+      font-family: "Fixel Display";
+    }
+    &:-ms-input-placeholder {
+      opacity: 1;
+      color: #121417;
+      @include font-size(16, 500, 24);
+      font-family: "Fixel Display";
+    }
+    &:-ms-input-placeholder {
+      opacity: 1;
+      color: #121417;
+      @include font-size(16, 500, 24);
+      font-family: "Fixel Display";
     }
     &:hover,
     &:focus {
@@ -43,10 +73,10 @@
 }
 
 .filterBox {
-  width: 164px;
+  box-sizing: border-box;
+  width: 178px;
   height: 48px;
   position: relative;
-  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 12px;
@@ -80,9 +110,10 @@
 
 .dropDowList {
   box-sizing: border-box;
+
   position: absolute;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   z-index: 8;
   top: 54px;
   left: 0;
@@ -92,7 +123,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 20px;
+  padding: 12px 0px 12px 24px;
   border-radius: 15px;
   border: 1px solid rgba(18, 20, 23, 0.1);
   background: $pageBgColor;
@@ -110,6 +141,7 @@
 }
 .dropDownItem {
   cursor: pointer;
+
   //   padding-left: 16px;
 }
 
@@ -148,7 +180,14 @@
 }
 
 .categoriesName {
+  white-space: nowrap;
+  overflow: hidden;
   text-transform: capitalize;
   color: $darckTextColor;
   @include font-size(16, 500, 24);
+  &:hover,
+  &:focus,
+  &:active {
+    color: $mainAccentColor;
+  }
 }

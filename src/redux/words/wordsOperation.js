@@ -1,33 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
 import { toast } from "react-toastify";
-
-export const getWordsByCategory = createAsyncThunk(
-  "words/getWordsByCategory",
-  async ({ category, query }, { rejectWithValue, dispatch }) => {
-    try {
-      const response = await axios.get(`/words/all/${category}`, {
-        params: { search: query },
-      });
-
-      // setAuthHeader(token);
-
-      const data = response.data;
-      return data;
-    } catch (error) {
-      console.error("Помилка при отриманні слів за категорією:", error);
-      return rejectWithValue(error.message);
-    }
-  }
-);
+import { instance } from "../../api";
 
 export const getAllWords = createAsyncThunk(
   "words/getAllWords",
-  async ({ rejectWithValue, searchQuery }) => {
+  async ({ searchQuery, page, perPage }, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await axios.get("/words/all", {
-        params: { keyword: searchQuery },
+      const { data } = await instance.get("/words/all", {
+        params: { keyword: searchQuery, page, perPage },
       });
       return data;
     } catch (error) {
@@ -40,7 +20,7 @@ export const getCategories = createAsyncThunk(
   "words/getCategories",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/words/categories");
+      const { data } = await instance.get("/words/categories");
 
       return data;
     } catch (error) {
@@ -52,7 +32,7 @@ export const getStatistics = createAsyncThunk(
   "words/getStatistics",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/words/statistics");
+      const { data } = await instance.get("/words/statistics");
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message });
@@ -64,7 +44,7 @@ export const addNewWord = createAsyncThunk(
   "words/addNewWord",
   async (newWordData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/words/create", newWordData);
+      const { data } = await instance.post("/words/create", newWordData);
 
       return data;
     } catch (error) {
@@ -79,7 +59,7 @@ export const getUserWords = createAsyncThunk(
   "words/getUserWords",
   async ({ page, perPage }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/words/own", {
+      const { data } = await instance.get("/words/own", {
         params: { page, perPage },
       });
       return data;
@@ -88,24 +68,24 @@ export const getUserWords = createAsyncThunk(
     }
   }
 );
-// export const getUserWords = createAsyncThunk(
-//   "words/getUserWords",
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const { data } = await axios.get("/words/own");
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue({ message: error.message });
-//     }
-//   }
-// );
+export const addWordsById = createAsyncThunk(
+  "words/addWordsById",
+  async (currentWordId, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.post(`/words/add/${currentWordId}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue({ message: error.message });
+    }
+  }
+);
 
 export const deleteWord = createAsyncThunk(
   "words/deleteWord",
   async (currentWordId, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/words/delete/${currentWordId}`);
-      toast.info("Words was successfully deleted");
+      const { data } = await instance.delete(`/words/delete/${currentWordId}`);
+      toast.success("Words was successfully deleted");
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message });
@@ -115,12 +95,39 @@ export const deleteWord = createAsyncThunk(
 
 export const editWord = createAsyncThunk(
   "words/editWord",
-  async (currentWordId, { rejectWithValue }) => {
+  async (editWordData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/words/delete/${currentWordId}`);
+      const { data } = await instance.patch(
+        `/words/edit/${editWordData.id}`,
+        editWordData.data
+      );
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message });
+    }
+  }
+);
+
+export const getTasks = createAsyncThunk(
+  "words/getTasks",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get("/words/tasks");
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addAnsvers = createAsyncThunk(
+  "words/addAnsvers",
+  async (userAnswers, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.post("/words/answers", userAnswers);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

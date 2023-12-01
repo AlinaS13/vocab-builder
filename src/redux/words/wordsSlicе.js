@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addAnsvers,
   addNewWord,
   deleteWord,
   editWord,
   getAllWords,
   getCategories,
   getStatistics,
+  getTasks,
   getUserWords,
 } from "./wordsOperation";
 
@@ -24,6 +26,8 @@ const initialState = {
   },
   categories: null,
   statistics: null,
+  tasks: null,
+  tasksAnswers: [],
   isLoading: false,
   isModalAddWordOpen: false,
 };
@@ -44,13 +48,10 @@ const wordsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getAllWords.fulfilled, (state, { payload }) => {
-        state.allWords = {
-          ...state.allWords,
-          results: [...state.allWords.results, ...payload.results],
-          totalPages: payload.totalPages,
-          page: payload.page,
-          perPage: payload.perPage,
-        };
+        state.allWords.results = payload.results;
+        state.allWords.totalPages = payload.totalPages;
+        state.allWords.page = payload.page;
+        state.allWords.perPage = payload.perPage;
         state.isLoading = false;
       })
       .addCase(getAllWords.rejected, (state, action) => {
@@ -93,6 +94,7 @@ const wordsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addNewWord.fulfilled, (state, { payload }) => {
+        state.userWords.results.push(payload);
         state.statistics.totalCount = state.statistics.totalCount + 1;
         state.isLoading = false;
       })
@@ -112,12 +114,32 @@ const wordsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(editWord.fulfilled, (state, { payload }) => {
-        state.userWords.results = state.userWords.results.map((word) => {
-          if (word._id === payload._id) {
-            return { ...word, ...payload };
-          }
-          return word;
-        });
+        state.userWords.results = state.userWords.results.filter(
+          (word) => word._id !== payload.id
+        );
+        if (state.statistics) {
+          state.statistics.totalCount -= 1;
+        }
+      })
+      .addCase(getTasks.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getTasks.fulfilled, (state, { payload }) => {
+        state.tasks = payload.tasks;
+        state.isLoading = false;
+      })
+      .addCase(getTasks.rejected, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(addAnsvers.pending, (state, action) => {
+        // state.isLoading = true;
+      })
+      .addCase(addAnsvers.fulfilled, (state, { payload }) => {
+        state.tasksAnswers = payload;
+        // state.isLoading = false;
+      })
+      .addCase(addAnsvers.rejected, (state, action) => {
+        // state.isLoading = false;
       });
   },
 });

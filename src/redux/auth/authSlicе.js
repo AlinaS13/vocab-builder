@@ -11,7 +11,7 @@ const initialState = {
   email: "",
   token: null,
   error: null,
-  isAuth: false,
+  // isAuth: false,
   isAuthLoading: false,
   isModalOpen: false,
 };
@@ -38,7 +38,7 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.status = true;
         state.isAuthLoading = false;
-        state.isAuth = true;
+        // state.isAuth = true;
         state.error = null;
       })
       .addCase(registrationUser.rejected, (state, action) => {
@@ -53,7 +53,7 @@ const authSlice = createSlice({
         state.email = action.payload.email;
         state.token = action.payload.token;
         state.isAuthLoading = false;
-        state.isAuth = true;
+        // state.isAuth = true;
         state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
@@ -67,7 +67,7 @@ const authSlice = createSlice({
         state.name = null;
         state.email = null;
         state.token = null;
-        state.isAuth = false;
+        // state.isAuth = false;
         state.isAuthLoading = false;
         state.error = null;
       })
@@ -83,13 +83,13 @@ const authSlice = createSlice({
         state.email = action.payload.email;
         state.token = action.payload.token;
         state.isAuthLoading = false;
-        state.isAuth = true;
+        // state.isAuth = true;
         state.error = null;
       })
       .addCase(getCurrentUser.rejected, (state, action) => {
-        state.error = action.payload;
+        // state.error = action.payload;
         state.isAuthLoading = false;
-        state.isAuth = false;
+        // state.isAuth = false;
       });
   },
 });

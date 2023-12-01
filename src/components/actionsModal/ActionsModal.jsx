@@ -6,7 +6,12 @@ import { deleteWord } from "../../redux/words/wordsOperation";
 import { useDispatch } from "react-redux";
 import { EditWordModal } from "../editWordModal/EditWordModal";
 
-export const ActionsModal = ({ isOpen, onClose, currentWordId }) => {
+export const ActionsModal = ({
+  isOpen,
+  onClose,
+  currentWordId,
+  currentWord,
+}) => {
   const dispatch = useDispatch();
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
 
@@ -58,7 +63,11 @@ export const ActionsModal = ({ isOpen, onClose, currentWordId }) => {
         </div>
       </div>
       {isOpenEditModal && (
-        <EditWordModal isOpen={isOpenEditModal} onClose={closeModalEditWord} />
+        <EditWordModal
+          isOpen={isOpenEditModal}
+          onClose={closeModalEditWord}
+          currentWord={currentWord}
+        />
       )}
     </div>
   );

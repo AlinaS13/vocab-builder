@@ -1,0 +1,124 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(18, 20, 23, 0.2);
+  z-index: 20;
+
+  @media screen and (min-width: 768px) {
+    top: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 20;
+  }
+}
+.modalContainer {
+  box-sizing: border-box;
+  position: relative;
+  width: 250px;
+  background-color: $mainAccentColor;
+  padding: 25px;
+  z-index: 20;
+  border-radius: 30px;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    width: 528px;
+    min-height: 520px;
+    padding: 48px 79px;
+  }
+}
+
+.modalCloseButton {
+  opacity: 0;
+  outline: none;
+  padding: 0px;
+  opacity: 1;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.2);
+    color: $mainAccentColor;
+  }
+}
+.modalCloseSvg {
+  width: 20px;
+  height: 20px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.modalTitle {
+  text-align: center;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.8px;
+  color: $lightTextColor;
+  font-weight: 600;
+  margin-bottom: 28px;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+  }
+}
+.resultWrp {
+  display: flex;
+  gap: 64px;
+}
+.resultTitle {
+  color: rgba(252, 252, 252, 0.5);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  margin-bottom: 8px;
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+  }
+}
+
+.resultList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  p {
+    text-transform: capitalize;
+    color: $lightTextColor;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.resultImg {
+  position: absolute;
+  right: 6px;
+  bottom: 21px;
+}
