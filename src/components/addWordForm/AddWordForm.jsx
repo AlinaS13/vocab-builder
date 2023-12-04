@@ -28,10 +28,10 @@ export const AddWordForm = () => {
     setIsCategoriesOpen(!isCategoriesOpen);
   };
   useEffect(() => {
-    if (isCategoriesOpen) {
+    if (isCategoriesOpen && !categories) {
       dispatch(getCategories());
     }
-  }, [dispatch, isCategoriesOpen]);
+  }, [dispatch, isCategoriesOpen, categories]);
   const enPattern = "\\b[A-Za-z'-]+(?:\\s+[A-Za-z'-]+)*\\b";
   const uaPattern = "^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\\s]+$";
 

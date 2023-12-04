@@ -10,14 +10,14 @@ import { useDispatch } from "react-redux";
 import { addWordsById } from "../../redux/words/wordsOperation";
 import { toast } from "react-toastify";
 
-export const WordsTable = ({ ownWords, allWordss }) => {
+export const WordsTable = ({ ownWords, allWords }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const isDictionaryPage = location.pathname === "/dictionary";
   const [isOpenActionsModal, setIsOpenActionsModal] = useState(false);
   const [currentWordId, setCurrentWordId] = useState(null);
   const [currentWord, setCurrentWord] = useState(null);
-
+  const [addedWords, setAddedWords] = useState([]);
   const openModalActionsWord = () => setIsOpenActionsModal(true);
   const closeModalActionsWord = () => setIsOpenActionsModal(false);
 
@@ -79,31 +79,13 @@ export const WordsTable = ({ ownWords, allWordss }) => {
               ),
             },
           ]),
-
-      // {
-      //   Header: "Progress",
-      //   accessor: "progress",
-      //   Cell: ({ cell }) => <ProgressBar value={cell.value} />,
-      // },
-      // {
-      //   Header: "",
-      //   accessor: "actions",
-      //   Cell: ({ row }) => (
-      //     <button
-      //       className={styles.actionBtn}
-      //       onClick={() => handleActions(row)}
-      //     >
-      //       ...
-      //     </button>
-      //   ),
-      // },
     ],
     // eslint-disable-next-line
     [isDictionaryPage]
   );
 
   const data = useMemo(() => [ownWords], [ownWords]);
-  const dataRecomend = useMemo(() => [allWordss], [allWordss]);
+  const dataRecomend = useMemo(() => [allWords], [allWords]);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns,

@@ -14,8 +14,9 @@ import {
 
 import { openModalAddWord } from "../../redux/words/wordsSlicе";
 
-export const Dashboard = () => {
+export const Dashboard = ({ handleSearchChange, searchQuery }) => {
   const dispatch = useDispatch();
+
   const location = useLocation();
   const statistics = useSelector(selectStatistics);
   const isModalAddWordOpen = useSelector(selectIsModalAddWordOpen);
@@ -25,7 +26,10 @@ export const Dashboard = () => {
   return (
     <div>
       <div className={styles.dashboardFilterWrp}>
-        <Filters />
+        <Filters
+          handleSearchChange={handleSearchChange}
+          searchQuery={searchQuery}
+        />
         <div className={styles.dashboardWrp}>
           <div className={styles.dashboardProgres}>
             To study:
@@ -42,11 +46,7 @@ export const Dashboard = () => {
               Add word <AiOutlinePlus color="#85AA9F" />
             </button>
           )}
-          {isModalAddWordOpen && (
-            <AddWordModal
-            // isOpen={isOpenAddModal} onClose={closeModalAddWord}
-            />
-          )}
+          {isModalAddWordOpen && <AddWordModal />}
           <NavLink className={styles.dashboardlink} to="/training">
             Train oneself <BsArrowRight color="#85AA9F" />
           </NavLink>

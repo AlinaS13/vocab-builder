@@ -4,10 +4,19 @@ import { instance } from "../../api";
 
 export const getAllWords = createAsyncThunk(
   "words/getAllWords",
-  async ({ searchQuery, page, perPage }, { rejectWithValue, dispatch }) => {
+  async (
+    { searchQuery, selectedCategory, isIrregular, page, perPage },
+    { rejectWithValue }
+  ) => {
     try {
       const { data } = await instance.get("/words/all", {
-        params: { keyword: searchQuery, page, perPage },
+        params: {
+          keyword: searchQuery,
+          category: selectedCategory,
+          isIrregular,
+          page,
+          perPage,
+        },
       });
       return data;
     } catch (error) {
@@ -57,10 +66,19 @@ export const addNewWord = createAsyncThunk(
 );
 export const getUserWords = createAsyncThunk(
   "words/getUserWords",
-  async ({ page, perPage }, { rejectWithValue }) => {
+  async (
+    { searchQuery, selectedCategory, isIrregular, page, perPage },
+    { rejectWithValue }
+  ) => {
     try {
       const { data } = await instance.get("/words/own", {
-        params: { page, perPage },
+        params: {
+          keyword: searchQuery,
+          category: selectedCategory,
+          isIrregular,
+          page,
+          perPage,
+        },
       });
       return data;
     } catch (error) {

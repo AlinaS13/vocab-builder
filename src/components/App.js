@@ -5,10 +5,11 @@ import { Layout } from "./layout/Layout";
 import "react-toastify/dist/ReactToastify.css";
 import { PrivateRoute } from "../hooks/PrivateRoute";
 import { PublicRoute } from "../hooks/PublicRoute";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Suspense, useEffect } from "react";
 import { getCurrentUser } from "../redux/auth/authOperation";
 import { Loader } from "./loader/Loader";
+import { getisAuth } from "../redux/auth/authSelector";
 
 const DictionaryPage = lazy(() =>
   import("../pages/dictionaryPage/DictionaryPage")
@@ -23,10 +24,12 @@ const NotFoundPage = lazy(() => import("../pages/notFoundPage/NotFoundPage"));
 
 function App() {
   const dispatch = useDispatch();
-
+  const isLoggedIn = useSelector(getisAuth);
   useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(getCurrentUser());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <div className={styles.container}>
