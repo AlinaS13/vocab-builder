@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./ActionsModal.module.scss";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FiEdit2 } from "react-icons/fi";
-import { deleteWord } from "../../redux/words/wordsOperation";
+import { deleteWord, getStatistics } from "../../redux/words/wordsOperation";
 import { useDispatch } from "react-redux";
 import { EditWordModal } from "../editWordModal/EditWordModal";
+import { toast } from "react-toastify";
 
 export const ActionsModal = ({
   isOpen,
@@ -34,6 +35,21 @@ export const ActionsModal = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   });
 
+  const hendleDeleteWord = () => {
+    dispatch(deleteWord(currentWordId))
+      .then((response) => {
+        if (response.payload) {
+          dispatch(getStatistics());
+          toast.success("Word successfully added to dictionary");
+        } else {
+          toast.error("Failed to add word to dictionary");
+        }
+      })
+      .catch((error) => {
+        toast.error("Failed to add word to dictionary");
+      });
+    onClose();
+  };
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div
@@ -53,8 +69,7 @@ export const ActionsModal = ({
           <button
             type="button"
             onClick={() => {
-              dispatch(deleteWord(currentWordId));
-              onClose();
+              hendleDeleteWord();
             }}
           >
             <FaRegTrashAlt color="85AA9F" />

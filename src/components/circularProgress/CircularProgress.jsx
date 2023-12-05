@@ -20,6 +20,7 @@ function CircularProgressWithLabel(props) {
         <CircularProgress
           className={styles.progressCircul}
           style={{
+            color: "#85aa9f",
             width: "58px",
             height: "58px",
           }}

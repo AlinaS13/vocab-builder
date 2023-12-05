@@ -72,7 +72,8 @@ const WordsTableAndPagination = ({ searchQuery }) => {
         perPage: allWords.perPage,
       })
     );
-  }, [dispatch, searchQuery, allWords.page, allWords.perPage]);
+    // eslint-disable-next-line
+  }, []);
 
   const handlePageChange = (newPage) => {
     dispatch(
@@ -93,7 +94,7 @@ const WordsTableAndPagination = ({ searchQuery }) => {
           {results.length > 0 ? (
             <WordsTable allWords={results} />
           ) : (
-            <p> not found</p>
+            searchQuery && <p>{searchQuery} not found</p>
           )}
           {totalPages > 1 && (
             <WordsPagination

@@ -1,0 +1,145 @@
+@import "../../scss/mixins";
+@import "../../scss/variables";
+
+.backdrop {
+  box-sizing: border-box;
+  z-index: 1;
+  position: fixed;
+  padding: 16px;
+  top: 0;
+  left: 0;
+  width: 58%;
+  height: 100%;
+  background-color: $mainAccentColor;
+  overflow: hidden;
+  transform: translateX(175%);
+  transition: transform 200ms linear;
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 40%;
+    transform: translateX(250%);
+  }
+  &::after {
+    z-index: -1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    min-width: 185px;
+    height: 363px;
+    content: "";
+    background-image: url(../../assets/img/bg-img-mb-menu.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    @media screen and (min-width: $breakpoint-tablet) {
+      min-width: 300px;
+      height: 435px;
+      background-image: url(../../assets/img/bg-img-tb-menu.png);
+    }
+  }
+}
+
+.backdrop.active {
+  transform: translateX(70%);
+  @media screen and (min-width: $breakpoint-tablet) {
+    transform: translateX(146%);
+  }
+}
+.closeBtn {
+  background-color: transparent;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  top: 15px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    display: none;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.2);
+  }
+}
+.closeSvg {
+  width: 32px;
+  height: 32px;
+}
+.authWrp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    gap: 16px;
+  }
+}
+.userName {
+  color: $lightTextColor;
+  @include font-size(16, 500);
+  @media screen and (min-width: $breakpoint-tablet) {
+    @include font-size(20, 500);
+  }
+}
+.userSvgWrp {
+  position: relative;
+  background-color: $lightTextColor;
+  width: 36px;
+  height: 36px;
+  border-radius: 30px;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 48px;
+    height: 48px;
+  }
+  svg {
+    fill: $mainAccentColor;
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      top: 11px;
+      right: 12px;
+    }
+  }
+}
+
+.navWrp {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 28px;
+}
+.navLink {
+  display: block;
+  color: $lightTextColor;
+  @include font-size(14, 500);
+  &:hover,
+  &:focus {
+    color: $darckTextColor;
+    transition: $hoverAnimation;
+  }
+  &[aria-current="page"] {
+    color: $darckTextColor;
+    background-color: $lightTextColor;
+
+    padding: 12px 20px;
+    border-radius: 15px;
+  }
+}
+.logoutBtn {
+  display: block;
+  background: transparent;
+  padding-top: 5px;
+  padding-left: 0;
+  padding-right: 0;
+  svg {
+    width: 24px;
+    height: 24px;
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+    }
+  }
+}

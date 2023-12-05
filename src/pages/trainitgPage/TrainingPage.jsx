@@ -13,12 +13,16 @@ import { Loader } from "../../components/loader/Loader";
 
 import { useEffect } from "react";
 import { getTasks } from "../../redux/words/wordsOperation";
+import { LogOutModal } from "../../components/logOutModal/LogOutModal";
+import { selectIsModalOpen } from "../../redux/auth/authSelector";
+import { openModalLogOut } from "../../redux/auth/authSlicе";
 
 const TrainingPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
   const isLoading = useSelector(isLoadingWords);
+  const isModalOpen = useSelector(selectIsModalOpen);
 
   const openModalAddWordAndRedirect = () => {
     dispatch(openModalAddWord());
@@ -59,7 +63,11 @@ const TrainingPage = () => {
                 >
                   Add word
                 </button>
-                <button type="button" className={styles.cancelButton}>
+                <button
+                  type="button"
+                  className={styles.cancelButton}
+                  onClick={() => dispatch(openModalLogOut())}
+                >
                   Cancel
                 </button>
               </div>
@@ -68,6 +76,7 @@ const TrainingPage = () => {
           </div>
         </div>
       )}
+      {isModalOpen && <LogOutModal />}
     </div>
   );
 };

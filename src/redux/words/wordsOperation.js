@@ -54,9 +54,12 @@ export const addNewWord = createAsyncThunk(
   async (newWordData, { rejectWithValue }) => {
     try {
       const { data } = await instance.post("/words/create", newWordData);
-
+      toast.success("Word successfully added");
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        toast.error("Bad request");
+      }
       if (error.response.status === 401) {
         toast.error("Such a word exists");
       }
@@ -80,6 +83,7 @@ export const getUserWords = createAsyncThunk(
           perPage,
         },
       });
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -91,8 +95,10 @@ export const addWordsById = createAsyncThunk(
   async (currentWordId, { rejectWithValue }) => {
     try {
       const { data } = await instance.post(`/words/add/${currentWordId}`);
+      toast.success("Word successfully added to dictionary");
       return data;
     } catch (error) {
+      toast.error("Word already added");
       return rejectWithValue({ message: error.message });
     }
   }
@@ -103,7 +109,6 @@ export const deleteWord = createAsyncThunk(
   async (currentWordId, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/words/delete/${currentWordId}`);
-      toast.success("Words was successfully deleted");
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message });

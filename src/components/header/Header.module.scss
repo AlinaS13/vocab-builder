@@ -5,10 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 23px;
-  padding-right: 23px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px;
+
   @media screen and (min-width: $breakpoint-tablet) {
     padding-left: 32px;
     padding-right: 32px;
@@ -50,7 +48,7 @@
 }
 .navLink {
   display: none;
-  @media screen and (min-width: $breakpoint-desktop) {
+  @media screen and (min-width: 1024px) {
     display: block;
     color: $darckTextColor;
     @include font-size(14, 500);
@@ -89,11 +87,13 @@
   width: 36px;
   height: 36px;
   border-radius: 30px;
+
   @media screen and (min-width: $breakpoint-tablet) {
     width: 48px;
     height: 48px;
   }
   svg {
+    fill: $lightTextColor;
     position: absolute;
     top: 5px;
     right: 6px;
@@ -107,14 +107,14 @@
   padding: 0;
   background-color: transparent;
   border: 0;
-  @media screen and (min-width: $breakpoint-tablet) {
+  @media screen and (min-width: 1024px) {
     display: none;
   }
 }
 
 .logoutBtn {
   display: none;
-  @media screen and (min-width: $breakpoint-tablet) {
+  @media screen and (min-width: 1024px) {
     display: block;
     background: transparent;
     padding-top: 5px;

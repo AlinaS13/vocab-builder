@@ -40,7 +40,7 @@
   @media screen and (min-width: 768px) {
     width: 528px;
     min-height: 520px;
-    padding: 48px 79px;
+    padding: 48px 64px;
   }
 }
 
@@ -106,19 +106,23 @@
 }
 
 .resultList {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  // display: flex;
+  // flex-direction: column;
+  // gap: 4px;
   p {
     text-transform: capitalize;
     color: $lightTextColor;
     font-size: 20px;
     font-weight: 500;
   }
+  li {
+    margin-bottom: 4px;
+  }
 }
 
 .resultImg {
   position: absolute;
-  right: 6px;
+  right: 1px;
   bottom: 21px;
+  z-index: -1;
 }

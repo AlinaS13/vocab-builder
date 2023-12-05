@@ -7,7 +7,7 @@ import { ProgressBar } from "../progressBar/ProgressBar";
 import { useLocation } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addWordsById } from "../../redux/words/wordsOperation";
+import { addWordsById, getStatistics } from "../../redux/words/wordsOperation";
 import { toast } from "react-toastify";
 
 export const WordsTable = ({ ownWords, allWords }) => {
@@ -17,7 +17,7 @@ export const WordsTable = ({ ownWords, allWords }) => {
   const [isOpenActionsModal, setIsOpenActionsModal] = useState(false);
   const [currentWordId, setCurrentWordId] = useState(null);
   const [currentWord, setCurrentWord] = useState(null);
-  const [addedWords, setAddedWords] = useState([]);
+
   const openModalActionsWord = () => setIsOpenActionsModal(true);
   const closeModalActionsWord = () => setIsOpenActionsModal(false);
 
@@ -28,8 +28,17 @@ export const WordsTable = ({ ownWords, allWords }) => {
   };
 
   const handleAddToDictionary = (row) => {
-    dispatch(addWordsById(row.original._id));
-    toast.success("Word successfully added to dictionary");
+    dispatch(addWordsById(row.original._id))
+      .then((response) => {
+        if (response.payload) {
+          dispatch(getStatistics());
+        } else {
+          toast.error("Failed to add word to dictionary");
+        }
+      })
+      .catch((error) => {
+        toast.error("Failed to add word to dictionary");
+      });
   };
   const columns = useMemo(
     () => [

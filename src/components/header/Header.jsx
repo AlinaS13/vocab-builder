@@ -12,12 +12,18 @@ import {
 } from "../../redux/auth/authSelector";
 import { openModalLogOut } from "../../redux/auth/authSlicе";
 import { LogOutModal } from "../logOutModal/LogOutModal";
+import { useState } from "react";
+import Menu from "./Menu";
+import Dropdown from "./Dropdown";
+import BurgerSVG from "../../assets/svg/Burger";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const userName = useSelector(getUserName);
   const isAuth = useSelector(getisAuth);
   const isModalOpen = useSelector(selectIsModalOpen);
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const [isDropdownActive, setIsDropdownActive] = useState(false);
   return (
     <header className={styles.header}>
       <div className={styles.logoWrp}>
@@ -50,9 +56,22 @@ export const Header = () => {
               <LuLogOut color="#121417" />
             </button>
             {isModalOpen && <LogOutModal />}
+            <button
+              type="button"
+              className={styles.burgerMenuBtn}
+              onClick={() => setIsMenuActive(true)}
+            >
+              <BurgerSVG />
+            </button>
           </div>
         </>
       ) : null}
+      <Dropdown
+        isDropdownActive={isDropdownActive}
+        setIsDropdownActive={setIsDropdownActive}
+      />
+
+      <Menu setIsMenuActive={setIsMenuActive} isMenuActive={isMenuActive} />
     </header>
   );
 };

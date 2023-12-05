@@ -56,9 +56,7 @@ export const Filters = ({ handleSearchChange, searchQuery }) => {
       dispatch(getAllWords({ selectedCategory: "verb", isIrregular: value }));
     }
   };
-
   const handleResetFilters = () => {
-    setSelectedCategory("Categories");
     setSelectedVerbCategory(null);
     setIsCategoriesOpen(false);
     const radioButtons = document.getElementsByName("verbFilter");
@@ -66,7 +64,8 @@ export const Filters = ({ handleSearchChange, searchQuery }) => {
       button.checked = false;
     });
     handleVerbCategoryChange(null);
-    hendleSelectCategory("Categories");
+    hendleSelectCategory(null);
+    setSelectedCategory("Categories");
   };
 
   return (

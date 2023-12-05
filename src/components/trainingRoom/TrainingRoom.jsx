@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAnsvers } from "../../redux/words/wordsOperation";
 import { WellDoneModal } from "../wellDoneModal/WellDoneModal";
 import { selectTasksAnswers } from "../../redux/words/wordsSelector";
-import CircularWithValueLabel from "../сircularProgress/CircularProgress";
+import CircularWithValueLabel from "../circularProgress/CircularProgress";
 
 export const TrainingRoom = ({ tasks }) => {
   const navigate = useNavigate();
@@ -142,12 +142,7 @@ export const TrainingRoom = ({ tasks }) => {
           >
             Save
           </button>
-          <NavLink
-            to="/dictionary"
-            className={styles.cancelTaskButton}
-            // type="button"
-            //   onClick={() => dispatch(closeModalAddWord())}
-          >
+          <NavLink to="/dictionary" className={styles.cancelTaskButton}>
             Cancel
           </NavLink>
         </div>

@@ -50,6 +50,14 @@ export const WellDoneModal = ({ isOpen, onClose, answers }) => {
                     </li>
                   );
                 })}
+              {correctAnswers?.length > 0 &&
+                correctAnswers.map((answer) => {
+                  return (
+                    <li key={nanoid()}>
+                      <p>{answer.en}</p>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
           <div>
@@ -60,6 +68,14 @@ export const WellDoneModal = ({ isOpen, onClose, answers }) => {
                   return (
                     <li key={nanoid()}>
                       <p>{mistake.ua}</p>
+                    </li>
+                  );
+                })}
+              {mistakes?.length > 0 &&
+                mistakes.map((mistake) => {
+                  return (
+                    <li key={nanoid()}>
+                      <p>{mistake.en}</p>
                     </li>
                   );
                 })}

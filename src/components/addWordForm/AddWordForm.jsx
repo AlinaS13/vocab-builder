@@ -8,7 +8,6 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import ukraine from "../../assets/img/ukraine.png";
 import united from "../../assets/img/united.png";
 import { addNewWord, getCategories } from "../../redux/words/wordsOperation";
-import { toast } from "react-toastify";
 import { closeModalAddWord } from "../../redux/words/wordsSlicе";
 
 export const AddWordForm = () => {
@@ -78,13 +77,9 @@ export const AddWordForm = () => {
         };
       }
       dispatch(addNewWord(newWordData));
-      toast.success("Word successfully added");
+
       dispatch(closeModalAddWord());
-    } catch (error) {
-      if (error.response.status === 401) {
-        toast.error("Such a word exists");
-      }
-    }
+    } catch (error) {}
   };
 
   return (

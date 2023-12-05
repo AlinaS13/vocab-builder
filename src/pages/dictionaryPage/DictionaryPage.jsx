@@ -16,11 +16,41 @@ import { getStatistics, getUserWords } from "../../redux/words/wordsOperation";
 
 const DictionaryPage = () => {
   const dispatch = useDispatch();
-
   const isModalAddWordOpen = useSelector(selectIsModalAddWordOpen);
 
   const [debounceTimer, setDebounceTimer] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  // const [selectedVerbCategory, setSelectedVerbCategory] = useState(null);
+  // const [selectedCategory, setSelectedCategory] = useState("Categories");
+  // const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+
+  // const isDictionaryPage = location.pathname === "/dictionary";
+
+  // const hendleOpenCategoriesList = () => {
+  //   setIsCategoriesOpen(!isCategoriesOpen);
+  // };
+  // const hendleSelectCategory = (el) => {
+  //   setSelectedCategory(el);
+  //   setIsCategoriesOpen(false);
+  //   dispatch(getUserWords({ selectedCategory: el }));
+  // };
+
+  // const handleVerbCategoryChange = (value) => {
+  //   setSelectedVerbCategory(value);
+  //   dispatch(getUserWords({ selectedCategory: "verb", isIrregular: value }));
+  // };
+
+  // const handleResetFilters = () => {
+  //   setSelectedVerbCategory(null);
+  //   setIsCategoriesOpen(false);
+  //   const radioButtons = document.getElementsByName("verbFilter");
+  //   radioButtons.forEach((button) => {
+  //     button.checked = false;
+  //   });
+  //   handleVerbCategoryChange(null);
+  //   hendleSelectCategory(null);
+  //   setSelectedCategory("Categories");
+  // };
 
   useEffect(() => {
     dispatch(getStatistics());
@@ -51,8 +81,18 @@ const DictionaryPage = () => {
           <Dashboard
             handleSearchChange={handleSearchChange}
             searchQuery={searchQuery}
+            // hendleOpenCategoriesList={hendleOpenCategoriesList}
+            // handleResetFilters={handleResetFilters}
+            // hendleSelectCategory={hendleSelectCategory}
+            // isCategoriesOpen={isCategoriesOpen}
+            // selectedCategory={selectedCategory}
+            // handleVerbCategoryChange={handleVerbCategoryChange}
+            // selectedVerbCategory={selectedVerbCategory}
           />
-          <WordsTableAndPagination searchQuery={searchQuery} />
+          <WordsTableAndPagination
+            searchQuery={searchQuery}
+            // selectedCategory={selectedCategory}
+          />
         </>
       </div>
 
@@ -77,7 +117,8 @@ const WordsTableAndPagination = ({ searchQuery }) => {
         perPage: userWords.perPage,
       })
     );
-  }, [dispatch, searchQuery, userWords.page, userWords.perPage]);
+    // eslint-disable-next-line
+  }, []);
 
   const handlePageChange = (newPage) => {
     dispatch(
@@ -98,7 +139,7 @@ const WordsTableAndPagination = ({ searchQuery }) => {
           {results.length > 0 ? (
             <WordsTable ownWords={results} />
           ) : (
-            <p>слово не знайдене</p>
+            searchQuery && <p>{searchQuery} not found</p>
           )}
           {totalPages > 1 && (
             <WordsPagination
