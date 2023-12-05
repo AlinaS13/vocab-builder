@@ -124,8 +124,12 @@ export const editWord = createAsyncThunk(
         `/words/edit/${editWordData.id}`,
         editWordData.data
       );
+      toast.success("Word successfully edited");
       return data;
     } catch (error) {
+      if (error.response.status === 400) {
+        toast.error("Bad request");
+      }
       return rejectWithValue({ message: error.message });
     }
   }

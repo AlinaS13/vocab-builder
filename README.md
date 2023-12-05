@@ -30,6 +30,7 @@ https://www.figma.com/file/XRhVBdCX1wPyzCRA567kud/VocabBuilder?type=design&node-
 - JS
 - SCSS
 - HTML
+- Redux / Redux Toolkit
 - Extra libraries
 
 ## Related link

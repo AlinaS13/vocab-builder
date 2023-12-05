@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 
 export const EditWordForm = ({ onClose, currentWord }) => {
   const dispatch = useDispatch();
-  const [en, setEn] = useState("");
-  const [ua, setUa] = useState("");
+  const [en, setEn] = useState(currentWord.en);
+  const [ua, setUa] = useState(currentWord.ua);
   const [error, setError] = useState({});
 
   const enPattern = "\\b[A-Za-z'-]+(?:\\s+[A-Za-z'-]+)*\\b";
@@ -22,7 +22,10 @@ export const EditWordForm = ({ onClose, currentWord }) => {
     const enRegex = new RegExp(enPattern);
     const uaRegex = new RegExp(uaPattern, "u");
 
-    if (!enRegex.test(en)) {
+    if (!en || !ua) {
+      setError({ message: "Please fill in both fields", code: "emptyFields" });
+      return;
+    } else if (!enRegex.test(en)) {
       setError({ message: "Letter must be English", code: "en" });
       return;
     } else if (!uaRegex.test(ua)) {
@@ -59,7 +62,6 @@ export const EditWordForm = ({ onClose, currentWord }) => {
       }
 
       dispatch(editWord(editWordData));
-      toast.success("Word successfully edited");
       onClose();
     } catch (error) {
       if (error.response.status === 401) {
@@ -81,11 +83,11 @@ export const EditWordForm = ({ onClose, currentWord }) => {
               setUa(e.target.value);
               setError({});
             }}
-            required
           />
           {error && error.code === "ua" && (
             <div className={styles.errorMessage}>{error.message}</div>
           )}
+
           <label htmlFor="ua" className={styles.addWordLabel}>
             <img src={ukraine} alt={ukraine} /> Ukrainian
           </label>
@@ -101,9 +103,11 @@ export const EditWordForm = ({ onClose, currentWord }) => {
               setEn(e.target.value);
               setError({});
             }}
-            required
           />
           {error && error.code === "en" && (
+            <div className={styles.errorMessage}>{error.message}</div>
+          )}
+          {error.code === "emptyFields" && (
             <div className={styles.errorMessage}>{error.message}</div>
           )}
           <label htmlFor="en" className={styles.addWordLabel}>
