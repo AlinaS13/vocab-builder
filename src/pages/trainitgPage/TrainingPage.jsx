@@ -46,9 +46,9 @@ const TrainingPage = () => {
           <TrainingRoom tasks={tasks} />
         </div>
       ) : (
-        <div className={styles.dictionaryWelcomeContainer}>
-          <div className={styles.contentWrp}>
-            <div className={styles.contentBox}>
+        <div className={styles.trainingWelcomeContainer}>
+          <div className={styles.trainingСontentWrp}>
+            <div className={styles.trainingСontentBox}>
               <h2>You don't have a single word to learn right now. </h2>
               <p>
                 Please create or add a word to start the workout. We want to
@@ -72,7 +72,7 @@ const TrainingPage = () => {
                 </button>
               </div>
             </div>
-            <img src={report} alt={report} />
+            <img className={styles.trainingPageImg} src={report} alt={report} />
           </div>
         </div>
       )}

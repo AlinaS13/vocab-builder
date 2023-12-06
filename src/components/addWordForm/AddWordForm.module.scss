@@ -171,9 +171,11 @@
   border-radius: 30px;
   background: $lightTextColor;
   color: $darckTextColor;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @include font-size(18, 700, 28);
   &:hover,
   &:focus {
+    transform: scale(1.05);
     color: $mainAccentColor;
   }
 }
@@ -188,8 +190,10 @@
   color: $lightTextColor;
   border: 1px solid rgba(252, 252, 252, 0.4);
   @include font-size(18, 700, 28);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
+    transform: scale(1.05);
     border: 1px solid rgba(252, 252, 252, 0.4);
     background: #fcfcfc;
     color: $darckTextColor;

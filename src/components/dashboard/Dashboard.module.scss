@@ -2,31 +2,55 @@
 @import "../../scss/variables";
 
 .dashboardFilterWrp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
 }
 .dashboardWrp {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 }
 .dashboardProgres {
   display: flex;
   align-items: center;
   gap: 8px;
   color: rgba(18, 20, 23, 0.5);
-  @include font-size(16, 500, 24);
+  @include font-size(14, 500);
+  margin-bottom: 12px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    @include font-size(16, 500, 24);
+    margin-bottom: 0;
+  }
 }
 
 .dashboardProgresValue {
   color: $darckTextColor;
   text-align: center;
-  @include font-size(20, 500, 30);
+  @include font-size(20, 500);
+  @media screen and (min-width: $breakpoint-desktop) {
+    line-height: 30px;
+  }
 }
-
+.dashboardAddBtnAndLinkWrp {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    margin-bottom: 0;
+  }
+}
 .dashboardAddBtn {
+  padding: 0;
   display: flex;
   gap: 8px;
   background-color: transparent;
@@ -37,6 +61,11 @@
     width: 20px;
     height: 20px;
   }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $mainAccentColor;
+  }
 }
 .dashboardlink {
   display: flex;
@@ -46,5 +75,10 @@
   svg {
     width: 20px;
     height: 20px;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    color: $mainAccentColor;
   }
 }

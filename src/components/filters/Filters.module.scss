@@ -3,12 +3,25 @@
 
 .filtersWrp {
   display: flex;
+  flex-direction: column;
   gap: 8px;
+  margin-bottom: 32px;
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
 }
 
 .inputWrp {
   position: relative;
-  width: 274px;
+  width: 100%;
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 274px;
+  }
   input {
     box-sizing: border-box;
     width: 100%;
@@ -18,11 +31,6 @@
     padding: 12px 24px;
     outline: none;
     @include font-size(16, 500, 24);
-    // &::placeholder {
-    //   color: $darckTextColor;
-    //   font-family: inherit;
-    //   @include font-size(16, 500, 24);
-    // }
     &::-webkit-input-placeholder {
       opacity: 1;
       color: #121417;
@@ -74,7 +82,8 @@
 
 .filterBox {
   box-sizing: border-box;
-  width: 178px;
+  margin-bottom: 8px;
+  width: 100%;
   height: 48px;
   position: relative;
   padding-left: 24px;
@@ -94,6 +103,8 @@
   @media screen and (min-width: $breakpoint-tablet) {
   }
   @media screen and (min-width: $breakpoint-desktop) {
+    margin-bottom: 0;
+    width: 178px;
   }
 }
 
@@ -101,11 +112,15 @@
   border: transparent;
   background-color: inherit;
   position: absolute;
-  top: 57%;
-  right: 11%;
   transform: translateY(-50%);
-
+  top: 57%;
+  right: 6%;
   padding: 0;
+  @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    right: 11%;
+  }
 }
 
 .dropDowList {
@@ -173,10 +188,13 @@
 }
 
 .radioButtons {
-  margin-left: 10px;
+  margin-left: 0px;
   display: flex;
   align-items: center;
   gap: 16px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    margin-left: 10px;
+  }
 }
 
 .categoriesName {
@@ -190,4 +208,8 @@
   &:active {
     color: $mainAccentColor;
   }
+}
+.radioLabel {
+  color: #121417;
+  @include font-size(14, 400);
 }

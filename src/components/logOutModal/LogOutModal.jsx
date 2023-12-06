@@ -31,7 +31,7 @@ export const LogOutModal = () => {
           <RxCross2 />
         </button>
         <h2 className={styles.modalTitle}>Confirmation</h2>
-        <p className={styles.modalText}>Are you sure you want to exit</p>
+        <p className={styles.modalText}>Are you sure you want to exit?</p>
         <div className={styles.btnContainer}>
           <button
             className={styles.btnCancel}

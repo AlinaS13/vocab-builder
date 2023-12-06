@@ -8,6 +8,25 @@ import { useSelector } from "react-redux";
 import { StyledEngineProvider } from "@mui/material/styles";
 
 function CircularProgressWithLabel(props) {
+  const [circleSize, setCircleSize] = React.useState({
+    width: "58px",
+    height: "58px",
+  });
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 375) {
+        setCircleSize({ width: "44px", height: "44px" });
+      } else {
+        setCircleSize({ width: "58px", height: "58px" });
+      }
+    };
+
+    handleResize(); // Set initial size
+    window.addEventListener("resize", handleResize); // Set size on window resize
+    return () => {
+      window.removeEventListener("resize", handleResize); // Clean up event listener
+    };
+  }, []);
   return (
     <StyledEngineProvider injectFirst>
       <Box
@@ -21,8 +40,8 @@ function CircularProgressWithLabel(props) {
           className={styles.progressCircul}
           style={{
             color: "#85aa9f",
-            width: "58px",
-            height: "58px",
+            width: circleSize.width,
+            height: circleSize.height,
           }}
           variant="determinate"
           value={props.normalise(props.value)}

@@ -28,22 +28,22 @@
 }
 
 .modalContainer {
+  box-sizing: border-box;
   position: relative;
-  width: 300px;
-  height: 140px;
-  background-color: $mainBgColor;
+  width: 342px;
+  background-color: $mainAccentColor;
   z-index: 20;
   border-radius: 20px;
   flex-direction: column;
   padding: 20px;
   @media screen and (min-width: 768px) {
     padding: 40px;
-    width: 420px;
-    height: 180px;
+    width: 628px;
   }
 }
 
 .modalBtnClose {
+  padding: 0;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -51,7 +51,8 @@
   height: 32px;
   border: none;
   border-radius: 50%;
-  background-color: white;
+  background-color: transparent;
+  color: $lightTextColor;
   cursor: pointer;
   svg {
     width: 20px;
@@ -60,7 +61,6 @@
   &:hover,
   &:focus {
     transform: scale(1.2);
-    color: $mainAccentColor;
   }
   @media screen and (min-width: 768px) {
     top: 20px;
@@ -72,7 +72,8 @@
   text-align: center;
   font-size: 24px;
   margin-bottom: 18px;
-  color: $darckTextColor;
+  font-weight: 600;
+  color: $lightTextColor;
   @media screen and (min-width: 768px) {
     font-size: 36px;
     margin-bottom: 28px;
@@ -81,9 +82,11 @@
 
 .modalText {
   text-align: center;
+  font-weight: 500;
   font-size: 18px;
+  line-height: 24px;
   margin-bottom: 22px;
-  color: $darckTextColor;
+  color: $lightTextColor;
   @media screen and (min-width: 768px) {
     font-size: 22px;
     margin-bottom: 42px;
@@ -102,24 +105,23 @@
 
 .btnYes {
   width: 140px;
-  padding: 10px 5px;
-  border: 1px solid $mainAccentColor;
+  padding: 14px 0;
+  border: 1px solid $lightTextColor;
   background-color: $mainAccentColor;
-  border-radius: 20px;
+  border-radius: 30px;
   color: $lightTextColor;
   font-style: normal;
   @include font-size(18, 700, 28);
   text-align: center;
-
   @media screen and (min-width: 768px) {
     width: 200px;
     font-size: 16px;
   }
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    background-color: $secondaryAccentColor;
-    border: 1px solid $secondaryAccentColor;
-    color: $lightTextColor;
+    background-color: $lightTextColor;
+    border: 1px solid $lightTextColor;
+    color: $darckTextColor;
     transform: scale(1.05);
     cursor: pointer;
   }
@@ -127,25 +129,22 @@
 
 .btnCancel {
   width: 140px;
-  padding: 10px 5px;
+  padding: 14px 0;
   border: none;
   background-color: $lightTextColor;
   border: 1px solid $secondaryAccentColor;
-  border-radius: 20px;
+  border-radius: 30px;
   font-style: normal;
   @include font-size(18, 700, 28);
   text-align: center;
-
-  color: $mainAccentColor;
+  color: $darckTextColor;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: $mainAccentColor;
+    transform: scale(1.05);
+  }
   @media screen and (min-width: 768px) {
     width: 200px;
     font-size: 16px;
-  }
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover {
-    background-color: $secondaryAccentColor;
-    color: $lightTextColor;
-    transform: scale(1.05);
-    cursor: pointer;
   }
 }

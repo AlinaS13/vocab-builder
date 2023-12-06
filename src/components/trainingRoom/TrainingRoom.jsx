@@ -142,7 +142,7 @@ export const TrainingRoom = ({ tasks }) => {
           >
             Save
           </button>
-          <NavLink to="/dictionary" className={styles.cancelTaskButton}>
+          <NavLink to="/dictionary" className={styles.cancelTaskLink}>
             Cancel
           </NavLink>
         </div>

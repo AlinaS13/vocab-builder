@@ -2,7 +2,10 @@
 @import "../../scss/variables";
 
 .progressCircular {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    margin-bottom: 16px;
+  }
 }
 
 .progressValue {

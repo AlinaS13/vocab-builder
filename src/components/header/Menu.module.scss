@@ -8,14 +8,14 @@
   padding: 16px;
   top: 0;
   left: 0;
-  width: 58%;
+  width: 59%;
   height: 100%;
   background-color: $mainAccentColor;
   overflow: hidden;
   transform: translateX(175%);
   transition: transform 200ms linear;
   @media screen and (min-width: $breakpoint-tablet) {
-    width: 40%;
+    width: 41%;
     transform: translateX(250%);
   }
   &::after {

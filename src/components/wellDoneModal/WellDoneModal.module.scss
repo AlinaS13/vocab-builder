@@ -30,17 +30,17 @@
 .modalContainer {
   box-sizing: border-box;
   position: relative;
-  width: 250px;
+  width: 343px;
+  min-height: 459px;
   background-color: $mainAccentColor;
-  padding: 25px;
+  padding: 48px 16px;
   z-index: 20;
-  border-radius: 30px;
-  flex-direction: column;
-
+  border-radius: 15px;
   @media screen and (min-width: 768px) {
     width: 528px;
     min-height: 520px;
     padding: 48px 64px;
+    border-radius: 30px;
   }
 }
 
@@ -75,17 +75,21 @@
 }
 
 .modalTitle {
-  text-align: center;
-  font-size: 40px;
-  line-height: 48px;
-  letter-spacing: -0.8px;
   color: $lightTextColor;
+  text-align: center;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 28px;
-
+  line-height: 28px;
+  letter-spacing: -0.48px;
+  margin-bottom: 32px;
   @media screen and (min-width: $breakpoint-tablet) {
   }
   @media screen and (min-width: $breakpoint-desktop) {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -0.8px;
+    font-weight: 600;
+    margin-bottom: 28px;
   }
 }
 .resultWrp {
@@ -94,26 +98,27 @@
 }
 .resultTitle {
   color: rgba(252, 252, 252, 0.5);
-  font-size: 16px;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   margin-bottom: 8px;
   @media screen and (min-width: $breakpoint-tablet) {
   }
   @media screen and (min-width: $breakpoint-desktop) {
+    font-size: 16px;
   }
 }
 
 .resultList {
-  // display: flex;
-  // flex-direction: column;
-  // gap: 4px;
   p {
     text-transform: capitalize;
     color: $lightTextColor;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 24px;
+    @media screen and (min-width: $breakpoint-desktop) {
+      font-size: 20px;
+    }
   }
   li {
     margin-bottom: 4px;
@@ -125,4 +130,8 @@
   right: 1px;
   bottom: 21px;
   z-index: -1;
+  width: 152px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 212px;
+  }
 }

@@ -133,8 +133,8 @@ export const Filters = ({ handleSearchChange, searchQuery }) => {
             checked={selectedVerbCategory === "true"}
             onChange={() => handleVerbCategoryChange("true")}
           />
-          <label htmlFor="custom-1" className={styles.radioInput}>
-            Regular
+          <label htmlFor="custom-1">
+            <span className={styles.radioLabel}>Regular</span>
           </label>
           <input
             className="custom-radio-filter"
@@ -145,8 +145,8 @@ export const Filters = ({ handleSearchChange, searchQuery }) => {
             checked={selectedVerbCategory === "false"}
             onChange={() => handleVerbCategoryChange("false")}
           />
-          <label htmlFor="custom-2" className={styles.radioInput}>
-            Irregular
+          <label htmlFor="custom-2">
+            <span className={styles.radioLabel}>Irregular</span>
           </label>
         </div>
       )}
