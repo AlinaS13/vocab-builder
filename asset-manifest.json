@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/vocab-builder/static/css/main.c66b1729.css",
-    "main.js": "/vocab-builder/static/js/main.0d5d2ed6.js",
+    "main.css": "/vocab-builder/static/css/main.1c9a9388.css",
+    "main.js": "/vocab-builder/static/js/main.0e2557de.js",
     "static/css/933.086348bd.chunk.css": "/vocab-builder/static/css/933.086348bd.chunk.css",
-    "static/js/933.28f656ca.chunk.js": "/vocab-builder/static/js/933.28f656ca.chunk.js",
-    "static/css/306.9e3ca56e.chunk.css": "/vocab-builder/static/css/306.9e3ca56e.chunk.css",
-    "static/js/306.af8cd2b9.chunk.js": "/vocab-builder/static/js/306.af8cd2b9.chunk.js",
-    "static/css/336.731fe201.chunk.css": "/vocab-builder/static/css/336.731fe201.chunk.css",
+    "static/js/933.c80986fe.chunk.js": "/vocab-builder/static/js/933.c80986fe.chunk.js",
+    "static/css/306.2bfcf6c1.chunk.css": "/vocab-builder/static/css/306.2bfcf6c1.chunk.css",
+    "static/js/306.d0ce428d.chunk.js": "/vocab-builder/static/js/306.d0ce428d.chunk.js",
+    "static/css/336.53601993.chunk.css": "/vocab-builder/static/css/336.53601993.chunk.css",
     "static/js/336.9b2e857f.chunk.js": "/vocab-builder/static/js/336.9b2e857f.chunk.js",
     "static/css/23.a7577d7d.chunk.css": "/vocab-builder/static/css/23.a7577d7d.chunk.css",
     "static/js/23.3745e19c.chunk.js": "/vocab-builder/static/js/23.3745e19c.chunk.js",
@@ -20,8 +20,8 @@
     "static/js/971.c26b09e5.chunk.js": "/vocab-builder/static/js/971.c26b09e5.chunk.js",
     "static/js/181.f557e84c.chunk.js": "/vocab-builder/static/js/181.f557e84c.chunk.js",
     "static/js/524.0855e389.chunk.js": "/vocab-builder/static/js/524.0855e389.chunk.js",
-    "static/css/168.cf4d3628.chunk.css": "/vocab-builder/static/css/168.cf4d3628.chunk.css",
-    "static/js/168.45ad47ec.chunk.js": "/vocab-builder/static/js/168.45ad47ec.chunk.js",
+    "static/css/702.3adcc562.chunk.css": "/vocab-builder/static/css/702.3adcc562.chunk.css",
+    "static/js/702.917fef21.chunk.js": "/vocab-builder/static/js/702.917fef21.chunk.js",
     "static/media/FixelDisplay-Medium.ttf": "/vocab-builder/static/media/FixelDisplay-Medium.2bf73c318b39b6747802.ttf",
     "static/media/FixelDisplay-SemiBold.ttf": "/vocab-builder/static/media/FixelDisplay-SemiBold.5a60f17e88fec6794428.ttf",
     "static/media/FixelDisplay-Bold.ttf": "/vocab-builder/static/media/FixelDisplay-Bold.42570372d1fc688bdc82.ttf",
@@ -39,13 +39,13 @@
     "static/media/book.png": "/vocab-builder/static/media/book.b3e770cebf7b849c791e.png",
     "index.html": "/vocab-builder/index.html",
     "static/media/logo.svg": "/vocab-builder/static/media/logo.e3b0e6323296508368beb4ab5901135c.svg",
-    "main.c66b1729.css.map": "/vocab-builder/static/css/main.c66b1729.css.map",
-    "main.0d5d2ed6.js.map": "/vocab-builder/static/js/main.0d5d2ed6.js.map",
+    "main.1c9a9388.css.map": "/vocab-builder/static/css/main.1c9a9388.css.map",
+    "main.0e2557de.js.map": "/vocab-builder/static/js/main.0e2557de.js.map",
     "933.086348bd.chunk.css.map": "/vocab-builder/static/css/933.086348bd.chunk.css.map",
-    "933.28f656ca.chunk.js.map": "/vocab-builder/static/js/933.28f656ca.chunk.js.map",
-    "306.9e3ca56e.chunk.css.map": "/vocab-builder/static/css/306.9e3ca56e.chunk.css.map",
-    "306.af8cd2b9.chunk.js.map": "/vocab-builder/static/js/306.af8cd2b9.chunk.js.map",
-    "336.731fe201.chunk.css.map": "/vocab-builder/static/css/336.731fe201.chunk.css.map",
+    "933.c80986fe.chunk.js.map": "/vocab-builder/static/js/933.c80986fe.chunk.js.map",
+    "306.2bfcf6c1.chunk.css.map": "/vocab-builder/static/css/306.2bfcf6c1.chunk.css.map",
+    "306.d0ce428d.chunk.js.map": "/vocab-builder/static/js/306.d0ce428d.chunk.js.map",
+    "336.53601993.chunk.css.map": "/vocab-builder/static/css/336.53601993.chunk.css.map",
     "336.9b2e857f.chunk.js.map": "/vocab-builder/static/js/336.9b2e857f.chunk.js.map",
     "23.a7577d7d.chunk.css.map": "/vocab-builder/static/css/23.a7577d7d.chunk.css.map",
     "23.3745e19c.chunk.js.map": "/vocab-builder/static/js/23.3745e19c.chunk.js.map",
@@ -59,11 +59,11 @@
     "971.c26b09e5.chunk.js.map": "/vocab-builder/static/js/971.c26b09e5.chunk.js.map",
     "181.f557e84c.chunk.js.map": "/vocab-builder/static/js/181.f557e84c.chunk.js.map",
     "524.0855e389.chunk.js.map": "/vocab-builder/static/js/524.0855e389.chunk.js.map",
-    "168.cf4d3628.chunk.css.map": "/vocab-builder/static/css/168.cf4d3628.chunk.css.map",
-    "168.45ad47ec.chunk.js.map": "/vocab-builder/static/js/168.45ad47ec.chunk.js.map"
+    "702.3adcc562.chunk.css.map": "/vocab-builder/static/css/702.3adcc562.chunk.css.map",
+    "702.917fef21.chunk.js.map": "/vocab-builder/static/js/702.917fef21.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c66b1729.css",
-    "static/js/main.0d5d2ed6.js"
+    "static/css/main.1c9a9388.css",
+    "static/js/main.0e2557de.js"
   ]
 }
