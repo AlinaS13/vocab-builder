@@ -30,15 +30,16 @@
 .modalContainer {
   box-sizing: border-box;
   position: relative;
-  width: 250px;
+  width: 343px;
   background-color: $mainAccentColor;
-  padding: 25px;
+  padding: 50px 16px;
   z-index: 20;
-  border-radius: 30px;
   flex-direction: column;
+  border-radius: 15px;
 
   @media screen and (min-width: 768px) {
     width: 630px;
+    border-radius: 30px;
     padding: 64px;
   }
 }
@@ -70,33 +71,5 @@
   @media screen and (min-width: $breakpoint-tablet) {
     width: 30px;
     height: 30px;
-  }
-}
-
-.modalTitle {
-  color: $lightTextColor;
-  font-weight: 500;
-  line-height: 1.2em;
-  font-size: 20px;
-  margin-bottom: 10px;
-  letter-spacing: -0.8px;
-  @media screen and (min-width: $breakpoint-tablet) {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  @media screen and (min-width: $breakpoint-desktop) {
-  }
-}
-.modalText {
-  color: $lightTextColor;
-  font-weight: 400;
-  font-size: 12px;
-  margin-bottom: 20px;
-  line-height: 1.37em;
-  @media screen and (min-width: $breakpoint-tablet) {
-    font-size: 16px;
-    margin-bottom: 40px;
-  }
-  @media screen and (min-width: $breakpoint-desktop) {
   }
 }

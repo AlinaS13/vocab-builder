@@ -13,11 +13,12 @@
 }
 .dashboardWrp {
   @media screen and (min-width: $breakpoint-tablet) {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
   }
   @media screen and (min-width: $breakpoint-desktop) {
-    display: flex;
     align-items: center;
-    gap: 16px;
   }
 }
 .dashboardProgres {

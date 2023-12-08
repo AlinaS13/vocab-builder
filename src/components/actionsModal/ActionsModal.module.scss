@@ -28,12 +28,11 @@
 .modalContainer {
   box-sizing: border-box;
   position: absolute;
-  // top: 20px;
   right: 17%;
   top: 50%;
-  width: 124px;
+  width: 117px;
   background-color: #fff;
-  padding: 12px;
+  padding: 12px 24px;
   z-index: 20;
   border-radius: 15px;
   flex-direction: column;
@@ -54,9 +53,13 @@
     padding: 0;
     background: transparent;
     display: flex;
+    align-items: center;
     gap: 8px;
     color: $darckTextColor;
-    @include font-size(16, 500, 24);
+    @include font-size(14, 500);
+    @media screen and (min-width: $breakpoint-desktop) {
+      @include font-size(16, 500, 24);
+    }
     &:hover,
     &:focus,
     &:active {

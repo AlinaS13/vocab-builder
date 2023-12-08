@@ -44,9 +44,7 @@ export const AddWordModal = () => {
           Adding a new word to the dictionary is an important step in enriching
           the language base and expanding the vocabulary.
         </p>
-        <AddWordForm
-        // onClick={() => dispatch(closeModalAddWord())}
-        />
+        <AddWordForm />
       </div>
     </div>
   );

@@ -4,8 +4,6 @@
 .loginPageContainer {
   display: flex;
   flex-direction: column-reverse;
-  //   width: 100%;
-  //   padding: 20px;
 
   @media screen and (min-width: $breakpoint-tablet) {
     flex-direction: column;

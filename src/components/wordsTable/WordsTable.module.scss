@@ -3,16 +3,20 @@
 
 .tableWrp {
   box-sizing: border-box;
-  padding: 18px;
-  border-radius: 15px;
-  background: $mainBgColor;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    padding: 18px;
+    border-radius: 15px;
+    background: $mainBgColor;
+    margin-bottom: 28px;
+  }
 }
 .table {
   border-collapse: collapse;
   width: 100%;
 }
 .thead {
+  width: 100%;
 }
 
 .trHead {
@@ -29,33 +33,41 @@
   background-color: rgba(133, 170, 159, 0.1);
   border: 1px solid #dbdbdb;
   border-top: 0px solid rgba(133, 170, 159, 0.1);
-  padding: 22px;
-  @include font-size(20, 500);
+  padding: 16px 14px;
+  @include font-size(16, 500);
   color: $darckTextColor;
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding: 22px;
+    @include font-size(20, 500);
+  }
   &:first-of-type {
     border-left: 1px solid transparent;
     border-top-left-radius: 8px;
     &::before {
-      position: absolute;
-      content: "";
-      background-repeat: no-repeat;
-      background-image: url(../../assets/img/united.png);
-      right: 20px;
-      top: 20px;
-      width: 32px;
-      height: 32px;
+      @media screen and (min-width: $breakpoint-desktop) {
+        position: absolute;
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url(../../assets/img/united.png);
+        right: 20px;
+        top: 20px;
+        width: 32px;
+        height: 32px;
+      }
     }
   }
   &:nth-child(2) {
     &::before {
-      position: absolute;
-      content: "";
-      background-repeat: no-repeat;
-      background-image: url(../../assets/img/ukraine.png);
-      right: 20px;
-      top: 20px;
-      width: 32px;
-      height: 32px;
+      @media screen and (min-width: $breakpoint-desktop) {
+        position: absolute;
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url(../../assets/img/ukraine.png);
+        right: 20px;
+        top: 20px;
+        width: 32px;
+        height: 32px;
+      }
     }
   }
   &:last-of-type {
@@ -74,10 +86,16 @@
 
 .tdBody {
   box-sizing: border-box;
+  word-break: break-all;
   border: 1px solid #ddd;
-  padding: 22px;
-  @include font-size(20, 500);
+  padding: 16px 14px;
+  @include font-size(14, 500);
   color: $darckTextColor;
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding: 22px;
+    @include font-size(20, 500);
+  }
+
   &:first-of-type {
     border-left: 1px solid transparent;
   }
@@ -90,28 +108,54 @@
 }
 
 .actionBtn {
+  padding: 0;
   text-align: center;
   background-color: transparent;
-  color: $darckTextColor;
-  @include font-size(22, 600);
+  color: rgba(18, 20, 23, 0.5);
+
+  @include font-size(16, 600);
   &:hover,
   &:focus,
   &:active {
     color: $mainAccentColor;
   }
+  @media screen and (min-width: $breakpoint-desktop) {
+    @include font-size(22, 600);
+    color: $darckTextColor;
+  }
 }
 
 .addToDictionaryBtn {
+  display: flex;
   text-align: center;
-  display: inline-flex;
   align-items: center;
   gap: 8px;
   background-color: transparent;
-  color: $darckTextColor;
-  @include font-size(16, 500);
+  span {
+    display: none;
+  }
   &:hover,
   &:focus,
   &:active {
     color: $mainAccentColor;
+  }
+  @media screen and (min-width: $breakpoint-tablet) {
+    flex-direction: column;
+    align-items: start;
+    span {
+      display: block;
+      color: $darckTextColor;
+      @include font-size(16, 500);
+    }
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    span {
+      @include font-size(16, 500);
+    }
+    color: $darckTextColor;
+    display: inline-flex;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
   }
 }

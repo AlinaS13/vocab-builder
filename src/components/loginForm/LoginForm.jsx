@@ -4,8 +4,6 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import * as yup from "yup";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { registrationUser } from "../../redux/auth/authOperation";
 import ErrorSVG from "../../assets/svg/ErrorSvg";
 import SuccessSVG from "../../assets/svg/SuccessSvg";
 import { loginUser } from "../../redux/auth/authOperation";

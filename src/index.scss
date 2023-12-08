@@ -2,7 +2,7 @@
 @import-normalize;
 
 body::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 body::-webkit-scrollbar-track {
@@ -12,7 +12,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: $mainAccentColor;
   border-radius: 20px;
-  border: 3px solid $mainBgColor;
 }
 
 @font-face {

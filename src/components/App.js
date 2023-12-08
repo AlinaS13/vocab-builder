@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
-import styles from "./App.scss";
 import { Layout } from "./layout/Layout";
 import "react-toastify/dist/ReactToastify.css";
 import { PrivateRoute } from "../hooks/PrivateRoute";
@@ -32,41 +31,39 @@ function App() {
   }, [dispatch, isLoggedIn]);
 
   return (
-    <div className={styles.container}>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <PrivateRoute>
-                <Layout />
-              </PrivateRoute>
-            }
-          >
-            <Route path="/dictionary" element={<DictionaryPage />} />
-            <Route path="/recommend" element={<RecommendPage />} />
-            <Route path="/training" element={<TrainingPage />} />
-          </Route>
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-    </div>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
+          <Route path="/dictionary" element={<DictionaryPage />} />
+          <Route path="/recommend" element={<RecommendPage />} />
+          <Route path="/training" element={<TrainingPage />} />
+        </Route>
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 }
 

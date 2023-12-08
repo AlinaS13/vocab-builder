@@ -1,34 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { clearAuthHeader, setAuthHeader } from "../../api";
-// import axios from "axios";
 import { instance } from "../../api";
-
-// import { useDispatch } from "react-redux";
-// import { getAllWords, getCategories } from "../words/wordsOperation";
-
-// export const registrationUser = createAsyncThunk(
-//   "auth/registration",
-//   async ({ rejectWithValue, ...userData }) => {
-//     const params = {
-//       url: "/users/signup",
-//       method: "POST",
-//       data: userData,
-//     };
-//     return axios(params)
-//       .then((response) => {
-//         setAuthHeader(response.data.token);
-//         return response.data;
-//       })
-
-//       .catch((error) => {
-//         if (error.response.status === 409) {
-//           toast.error("Such email already exists");
-//         }
-//         return rejectWithValue(error.message);
-//       });
-//   }
-// );
 
 export const registrationUser = createAsyncThunk(
   "auth/registration",
@@ -73,30 +46,6 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
-
-// export const getCurrentUser = createAsyncThunk(
-//   "auth/getCurrentUser",
-//   async (_, { rejectWithValue, getState }) => {
-//     const state = getState();
-
-//     const persistedToken = state.auth.token;
-
-//     if (persistedToken === null) {
-//       return rejectWithValue();
-//     }
-
-//     setAuthHeader(persistedToken);
-
-//     try {
-//       const { data } = await axios.get("/users/current", persistedToken);
-//       // useDispatch(getCategories);
-//       // useDispatch(getAllWords);
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
 
 export const getCurrentUser = createAsyncThunk(
   "auth/current",

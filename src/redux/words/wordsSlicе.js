@@ -57,16 +57,11 @@ const wordsSlice = createSlice({
       .addCase(getAllWords.rejected, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(getCategories.pending, (state, action) => {
-        // state.isLoading = true;
-      })
+      .addCase(getCategories.pending, (state, action) => {})
       .addCase(getCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;
-        // state.isLoading = false;
       })
-      .addCase(getCategories.rejected, (state, action) => {
-        // state.isLoading = false;
-      })
+      .addCase(getCategories.rejected, (state, action) => {})
       .addCase(getStatistics.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -131,16 +126,11 @@ const wordsSlice = createSlice({
       .addCase(getTasks.rejected, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(addAnsvers.pending, (state, action) => {
-        // state.isLoading = true;
-      })
+      .addCase(addAnsvers.pending, (state, action) => {})
       .addCase(addAnsvers.fulfilled, (state, { payload }) => {
         state.tasksAnswers = payload;
-        // state.isLoading = false;
       })
-      .addCase(addAnsvers.rejected, (state, action) => {
-        // state.isLoading = false;
-      });
+      .addCase(addAnsvers.rejected, (state, action) => {});
   },
 });
 export const { openModalAddWord, closeModalAddWord } = wordsSlice.actions;

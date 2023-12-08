@@ -4,8 +4,6 @@
 .registerPageContainer {
   display: flex;
   flex-direction: column-reverse;
-  //   width: 100%;
-  //   padding: 20px;
 
   @media screen and (min-width: $breakpoint-tablet) {
     flex-direction: column;
@@ -55,8 +53,6 @@
 
 .contentText {
   display: none;
-  //   color: rgba(18, 20, 23, 0.8);
-  //   @include font-size(14, 400);
   @media screen and (min-width: $breakpoint-tablet) {
     @include font-size(14, 400, 24);
     display: block;

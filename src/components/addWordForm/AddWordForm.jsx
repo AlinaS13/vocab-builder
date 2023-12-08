@@ -167,6 +167,11 @@ export const AddWordForm = () => {
             <label htmlFor="irregularCheckbox" className={styles.radioInput}>
               Irregular
             </label>
+            {isIrregular && (
+              <p className={styles.radioInputInfoMessage}>
+                Such data must be entered in the format I form-II form-III form.
+              </p>
+            )}
           </div>
         )}
         {error && error.code === "category" && (
@@ -191,7 +196,8 @@ export const AddWordForm = () => {
             <div className={styles.errorMessage}>{error.message}</div>
           )}
           <label htmlFor="ua" className={styles.addWordLabel}>
-            <img src={ukraine} alt={ukraine} /> Ukrainian
+            <img src={ukraine} alt={ukraine} className={styles.addWordImg} />
+            Ukrainian
           </label>
         </div>
 
@@ -211,7 +217,8 @@ export const AddWordForm = () => {
             <div className={styles.errorMessage}>{error.message}</div>
           )}
           <label htmlFor="en" className={styles.addWordLabel}>
-            <img src={united} alt={united} /> English
+            <img src={united} alt={united} className={styles.addWordImg} />{" "}
+            English
           </label>
         </div>
       </div>

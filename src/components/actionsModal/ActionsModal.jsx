@@ -40,13 +40,13 @@ export const ActionsModal = ({
       .then((response) => {
         if (response.payload) {
           dispatch(getStatistics());
-          toast.success("Word successfully added to dictionary");
+          toast.success("Word successfully deleted");
         } else {
-          toast.error("Failed to add word to dictionary");
+          toast.error("Failed to delete word");
         }
       })
       .catch((error) => {
-        toast.error("Failed to add word to dictionary");
+        toast.error("Failed to delete word");
       });
     onClose();
   };

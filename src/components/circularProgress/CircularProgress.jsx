@@ -21,10 +21,10 @@ function CircularProgressWithLabel(props) {
       }
     };
 
-    handleResize(); // Set initial size
-    window.addEventListener("resize", handleResize); // Set size on window resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize); // Clean up event listener
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (

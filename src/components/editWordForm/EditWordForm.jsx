@@ -73,9 +73,9 @@ export const EditWordForm = ({ onClose, currentWord }) => {
   return (
     <form onSubmit={handleFormSubmit}>
       <div className={styles.inputSet}>
-        <div className={styles.addWordInputWrp}>
+        <div className={styles.editWordInputWrp}>
           <input
-            className={styles.addWordInput}
+            className={styles.editWordInput}
             id="ua"
             type="text"
             defaultValue={currentWord.ua}
@@ -88,14 +88,15 @@ export const EditWordForm = ({ onClose, currentWord }) => {
             <div className={styles.errorMessage}>{error.message}</div>
           )}
 
-          <label htmlFor="ua" className={styles.addWordLabel}>
-            <img src={ukraine} alt={ukraine} /> Ukrainian
+          <label htmlFor="ua" className={styles.editWordLabel}>
+            <img src={ukraine} alt={ukraine} className={styles.editWordImg} />
+            Ukrainian
           </label>
         </div>
 
-        <div className={styles.addWordInputWrp}>
+        <div className={styles.editWordInputWrp}>
           <input
-            className={styles.addWordInput}
+            className={styles.editWordInput}
             id="en"
             type="text"
             defaultValue={currentWord.en}
@@ -110,14 +111,15 @@ export const EditWordForm = ({ onClose, currentWord }) => {
           {error.code === "emptyFields" && (
             <div className={styles.errorMessage}>{error.message}</div>
           )}
-          <label htmlFor="en" className={styles.addWordLabel}>
-            <img src={united} alt={united} /> English
+          <label htmlFor="en" className={styles.editWordLabel}>
+            <img src={united} alt={united} className={styles.editWordImg} />
+            English
           </label>
         </div>
       </div>
 
-      <div className={styles.addWordButtonsWrp}>
-        <button className={styles.addWordButton} type="submit">
+      <div className={styles.editWordButtonsWrp}>
+        <button className={styles.saveWordButton} type="submit">
           Save
         </button>
         <button className={styles.cancelButton} type="button" onClick={onClose}>

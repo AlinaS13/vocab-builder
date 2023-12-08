@@ -40,6 +40,8 @@ export const WordsTable = ({ ownWords, allWords }) => {
         toast.error("Failed to add word to dictionary");
       });
   };
+
+  const mobileHiddenCategory = window.innerWidth < 768;
   const columns = useMemo(
     () => [
       {
@@ -50,10 +52,15 @@ export const WordsTable = ({ ownWords, allWords }) => {
         Header: "Translation",
         accessor: "ua",
       },
-      {
-        Header: "Category",
-        accessor: "category",
-      },
+
+      ...((!isDictionaryPage && mobileHiddenCategory) || !mobileHiddenCategory
+        ? [
+            {
+              Header: "Category",
+              accessor: "category",
+            },
+          ]
+        : []),
       ...(isDictionaryPage
         ? [
             {
@@ -83,7 +90,8 @@ export const WordsTable = ({ ownWords, allWords }) => {
                   className={styles.addToDictionaryBtn}
                   onClick={() => handleAddToDictionary(row)}
                 >
-                  Add to Dictionary <BsArrowRight color="#85AA9F" />
+                  <span>Add to dictionary </span>
+                  <BsArrowRight color="#85AA9F" />
                 </button>
               ),
             },
@@ -99,7 +107,6 @@ export const WordsTable = ({ ownWords, allWords }) => {
     useTable({
       columns,
       data: isDictionaryPage ? data[0] : dataRecomend[0],
-      // data: data[0],
     });
 
   return (
