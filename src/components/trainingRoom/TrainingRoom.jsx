@@ -21,7 +21,9 @@ export const TrainingRoom = ({ tasks }) => {
   const [userAnswers, setUserAnswers] = useState([]);
   const [currentWordObject, setCurrentWordObject] = useState(tasks[currentKey]);
   const [inputValue, setInputValue] = useState("");
-  const [currentLanguage, setCurrentLanguage] = useState("");
+  const [currentTaskLanguage, setCurrentTaskLanguage] = useState("");
+  const [currentLanguageFromTranslate, setCurrentLanguageFromTranslate] =
+    useState("");
   const [isLastTask, setIsLastTask] = useState(false);
   const [submitRequested, setSubmitRequested] = useState(false);
 
@@ -34,10 +36,18 @@ export const TrainingRoom = ({ tasks }) => {
 
   useEffect(() => {
     setCurrentWordObject(tasks[currentKey]);
-    let currentLanguage = currentWordObject.en ? "en" : "ua";
-    setCurrentLanguage(currentLanguage);
     setIsLastTask(currentKey === tasks.length - 1);
-  }, [tasks, currentKey, currentLanguage, currentWordObject]);
+  }, [tasks, currentKey]);
+
+  useEffect(() => {
+    if (currentWordObject) {
+      let currentTaskLanguage = currentWordObject.task === "en" ? "en" : "ua";
+      let currentLanguageFromTranslate =
+        currentWordObject.task === "en" ? "ua" : "en";
+      setCurrentTaskLanguage(currentTaskLanguage);
+      setCurrentLanguageFromTranslate(currentLanguageFromTranslate);
+    }
+  }, [currentWordObject]);
 
   useEffect(() => {
     if (userAnswers.length > 0 && submitRequested === true) {
@@ -53,7 +63,7 @@ export const TrainingRoom = ({ tasks }) => {
     let value = inputValue ? inputValue : null;
     const newAnswer = {
       _id: currentWordObject._id,
-      task: currentLanguage,
+      task: currentTaskLanguage === "en" ? "en" : "ua",
       en: currentWordObject.en ? currentWordObject.en : value,
       ua: currentWordObject.ua ? currentWordObject.ua : value,
     };
@@ -70,7 +80,7 @@ export const TrainingRoom = ({ tasks }) => {
       let value = inputValue ? inputValue : null;
       const newAnswer = {
         _id: currentWordObject._id,
-        task: currentLanguage,
+        task: currentTaskLanguage === "en" ? "en" : "ua",
         en: currentWordObject.en ? currentWordObject.en : value,
         ua: currentWordObject.ua ? currentWordObject.ua : value,
       };
@@ -100,26 +110,26 @@ export const TrainingRoom = ({ tasks }) => {
             <div className={styles.translateLanguageMarkerWrp}>
               <div className={styles.translateLanguageMarker}>
                 <img
-                  src={currentLanguage !== "ua" ? ukraine : united}
-                  alt={currentLanguage !== "ua" ? ukraine : united}
+                  src={currentTaskLanguage !== "ua" ? ukraine : united}
+                  alt={currentTaskLanguage !== "ua" ? ukraine : united}
                 />
                 <p className={styles.languageTitle}>
-                  {currentLanguage !== "ua" ? "Ukrainian" : "English"}
+                  {currentTaskLanguage !== "ua" ? "Ukrainian" : "English"}
                 </p>
               </div>
             </div>
 
             <div className={styles.trainingTask}>
               <p className={styles.trainingTaskWord}>
-                {currentWordObject[currentLanguage]}
+                {currentWordObject[currentLanguageFromTranslate]}
               </p>
               <div className={styles.taskLanguageMarker}>
                 <img
-                  src={currentLanguage === "ua" ? ukraine : united}
-                  alt={currentLanguage === "ua" ? ukraine : united}
+                  src={currentTaskLanguage === "ua" ? ukraine : united}
+                  alt={currentTaskLanguage === "ua" ? ukraine : united}
                 />
                 <p className={styles.languageTitle}>
-                  {currentLanguage === "ua" ? "Ukrainian" : "English"}
+                  {currentTaskLanguage === "ua" ? "Ukrainian" : "English"}
                 </p>
               </div>
             </div>
@@ -134,14 +144,7 @@ export const TrainingRoom = ({ tasks }) => {
           </div>
         </div>
         <div className={styles.actionTasksButtonsWrp}>
-          <button
-            className={styles.saveTaskButton}
-            // disabled={!isLastTask}
-            // type="submit"
-            // onClick={handleSaveButtonClick}
-          >
-            Save
-          </button>
+          <button className={styles.saveTaskButton}>Save</button>
           <NavLink to="/dictionary" className={styles.cancelTaskLink}>
             Cancel
           </NavLink>
