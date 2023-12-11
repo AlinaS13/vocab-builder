@@ -11,6 +11,9 @@ export const registrationUser = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      if (error.response.status === 409) {
+        toast.error("This email has already been registered");
+      }
       return rejectWithValue(error.message);
     }
   }

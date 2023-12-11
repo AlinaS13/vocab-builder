@@ -18,40 +18,66 @@
     padding-right: 100px;
   }
 }
-.dictionaryWelcomeContainer {
-  min-height: 100vh;
-  background-color: $pageBgColor;
-  padding-top: 193px;
-}
 
-.contentWrp {
+.dictionaryСontentWrp {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
-  width: 900px;
   margin: 0 auto;
   gap: 32px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    margin-top: 90px;
+    width: 900px;
+    flex-direction: row;
+    align-items: stretch;
+  }
 }
-.contentBox {
-  padding: 10px;
+.dictionaryСontentBox {
+  @media screen and (min-width: $breakpoint-desktop) {
+    padding: 10px;
+  }
   h2 {
     color: $darckTextColor;
-    @include font-size(20, 500, 30);
-    margin-bottom: 32px;
+    @include font-size(16, 500, 24);
+    margin-bottom: 16px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      @include font-size(20, 500, 30);
+      margin-bottom: 30px;
+    }
   }
   p {
     color: $darckTextColor;
-    @include font-size(16, 400, 24);
+    @include font-size(14, 400);
     margin-bottom: 64px;
+    @media screen and (min-width: $breakpoint-desktop) {
+      @include font-size(16, 400, 24);
+      margin-bottom: 64px;
+    }
+  }
+}
+.dictionaryPageImg {
+  width: 144px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 203px;
+    height: 230px;
   }
 }
 
 .buttonWrp {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    gap: 10px;
+  }
 }
 
 .addButton {
-  width: 215px;
+  width: 100%;
+
   box-sizing: border-box;
   padding-top: 14px;
   padding-bottom: 14px;
@@ -59,27 +85,46 @@
   border: 1px solid #85aa9f;
   background: $mainAccentColor;
   color: $lightTextColor;
-
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @include font-size(18, 700, 28);
   &:hover,
   &:focus {
+    transform: scale(1.05);
     background: $pageBgColor;
     color: $mainAccentColor;
   }
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 215px;
+  }
 }
 .cancelButton {
-  width: 215px;
+  width: 100%;
   box-sizing: border-box;
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 30px;
   background: $pageBgColor;
-  color: $mainAccentColor;
-  border: 1px solid $mainAccentColor;
+  color: rgba(18, 20, 23, 0.5);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @include font-size(18, 700, 28);
+  @media screen and (min-width: $breakpoint-tablet) {
+    color: $mainAccentColor;
+    background: $pageBgColor;
+    border: 1px solid $mainAccentColor;
+  }
   &:hover,
   &:focus {
-    background: $mainAccentColor;
-    color: $lightTextColor;
+    transform: scale(1.05);
+    border: 1px solid $mainAccentColor;
+    background: $lightTextColor;
+    color: $mainAccentColor;
+    @media screen and (min-width: $breakpoint-desktop) {
+      border: 1px solid $mainAccentColor;
+      background: $mainAccentColor;
+      color: $lightTextColor;
+    }
+  }
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: 215px;
   }
 }
