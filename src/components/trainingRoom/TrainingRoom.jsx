@@ -110,11 +110,13 @@ export const TrainingRoom = ({ tasks }) => {
             <div className={styles.translateLanguageMarkerWrp}>
               <div className={styles.translateLanguageMarker}>
                 <img
-                  src={currentTaskLanguage !== "ua" ? ukraine : united}
-                  alt={currentTaskLanguage !== "ua" ? ukraine : united}
+                  src={currentLanguageFromTranslate !== "ua" ? ukraine : united}
+                  alt={currentLanguageFromTranslate !== "ua" ? ukraine : united}
                 />
                 <p className={styles.languageTitle}>
-                  {currentTaskLanguage !== "ua" ? "Ukrainian" : "English"}
+                  {currentLanguageFromTranslate !== "ua"
+                    ? "Ukrainian"
+                    : "English"}
                 </p>
               </div>
             </div>
@@ -125,11 +127,13 @@ export const TrainingRoom = ({ tasks }) => {
               </p>
               <div className={styles.taskLanguageMarker}>
                 <img
-                  src={currentTaskLanguage === "ua" ? ukraine : united}
-                  alt={currentTaskLanguage === "ua" ? ukraine : united}
+                  src={currentLanguageFromTranslate === "ua" ? ukraine : united}
+                  alt={currentLanguageFromTranslate === "ua" ? ukraine : united}
                 />
                 <p className={styles.languageTitle}>
-                  {currentTaskLanguage === "ua" ? "Ukrainian" : "English"}
+                  {currentLanguageFromTranslate === "ua"
+                    ? "Ukrainian"
+                    : "English"}
                 </p>
               </div>
             </div>
