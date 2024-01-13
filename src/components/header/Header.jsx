@@ -17,7 +17,7 @@ import Menu from "./Menu";
 import Dropdown from "./Dropdown";
 import BurgerSVG from "../../assets/svg/Burger";
 
-import { Lightrope } from "../decor/Lightrope";
+// import { Lightrope } from "../decor/Lightrope";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -73,7 +73,7 @@ export const Header = () => {
         setIsDropdownActive={setIsDropdownActive}
       />
       <Menu setIsMenuActive={setIsMenuActive} isMenuActive={isMenuActive} />{" "}
-      <Lightrope />
+      {/* <Lightrope /> */}
     </header>
   );
 };
