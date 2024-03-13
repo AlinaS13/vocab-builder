@@ -79,4 +79,4 @@ Start the server
 
 ## Authors
 
-The site was designed and developed by Alina Shestopalopva.
+The site was designed and developed by Alina Shestopalova.
